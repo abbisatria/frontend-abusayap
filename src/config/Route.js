@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import ScrollToTop from './ScrollToTop'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from '../pages/LoginPage'
+import SignUp from '../pages/SignUpPage'
 
 export default class App extends Component {
   render () {
@@ -12,6 +13,7 @@ export default class App extends Component {
         <ScrollToTop />
         <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/sign-up" component={SignUp} />
         </Switch>
       </BrowserRouter>
     )

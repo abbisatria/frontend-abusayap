@@ -5,7 +5,7 @@ import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import FormInput from '../components/Form/FormInput'
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   render () {
     return (
       <Row>
@@ -22,6 +22,9 @@ export default class Login extends Component {
               Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
             <Form>
+              <FormInput div="pt-3" group="inputWithIcon" type="email" placeholder="Enter your username">
+                <i className="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+              </FormInput>
               <FormInput div="py-3" group="inputWithIcon" type="email" placeholder="Enter your e-mail">
                 <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
@@ -34,7 +37,7 @@ export default class Login extends Component {
                     Login
                 </ButtonCustom>
               </Link>
-              <p className="text-center pt-4">Don’t have an account? Let’s <Link to='/sign-up'><b>Sign up</b></Link> </p>
+              <p className="text-center pt-4">Already have an account? Let’s <Link to='/login'><b>Login</b></Link> </p>
             </Form>
           </Container>
         </Col>
