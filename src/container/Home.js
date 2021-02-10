@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import HomeMenu from '../components/HomeMenu'
 import NavbarHome from '../components/NavbarHome'
 
 export default class Home extends Component {
@@ -6,6 +7,9 @@ export default class Home extends Component {
     return (
       <div>
         <NavbarHome/>
+        <div className="bg-gray">
+          <HomeMenu />
+        </div>
       </div>
     )
   }
