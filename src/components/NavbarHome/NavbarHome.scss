@@ -1,0 +1,11 @@
+@import '../../assets/scss/mixin';
+
+.text-phone-small{
+  @include text-large-18()
+}
+
+.nav-home {
+  img {
+    border-radius: 10px;
+  }
+}
