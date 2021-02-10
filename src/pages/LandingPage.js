@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import Landing from '../container/LandingPage'
 
 export default class LandingPage extends Component {
   render () {
     return (
-      <div>
-        <Link to="/login">go to login</Link>
-      </div>
+      <React.Fragment>
+        <Landing />
+      </React.Fragment>
     )
   }
 }
