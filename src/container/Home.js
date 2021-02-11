@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HomeMenu from '../components/HomeMenu'
 import NavbarHome from '../components/NavbarHome'
+import FooterHome from '../components/FooterHome'
 
 export default class Home extends Component {
   render () {
@@ -10,6 +11,7 @@ export default class Home extends Component {
         <div className="bg-gray">
           <HomeMenu />
         </div>
+        <FooterHome />
       </div>
     )
   }

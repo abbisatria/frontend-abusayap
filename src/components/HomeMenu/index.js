@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Col, Row, Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-
+import BalanceInfo from '../BalanceInfo'
+import TopUp from '../TopUp'
 import './style.scss'
 
 export default class HomeMenu extends Component {
@@ -26,7 +27,7 @@ export default class HomeMenu extends Component {
                 </ul>
                 <ul>
                   <li>
-                    <Link to="/home-page" className="text-menu left-line">Top Up</Link>
+                    <Link to="/home-page/topup" className="text-menu left-line">Top Up</Link>
                     <i className="fa fa-plus fa-lg fa-fw" aria-hidden="true"></i>
                   </li>
                 </ul>
@@ -44,17 +45,17 @@ export default class HomeMenu extends Component {
                 </ul>
               </Card>
             </Col>
+            <Col>
+              <Switch>
+                <Route exact path="/home-page">
+                  <BalanceInfo />
+                </Route>
+                <Route path="/home-page/topup">
+                  <TopUp />
+                </Route>
+              </Switch>
+            </Col>
           </Row>
-          <Switch>
-            <Route exact path="">
-              {/* routing component */}
-              {/* <DetailInfo /> */}
-            </Route>
-            <Route path="">
-              {/* routing component */}
-              {/* <OrderHistory /> */}
-            </Route>
-          </Switch>
         </Router>
       </Container>
     )
