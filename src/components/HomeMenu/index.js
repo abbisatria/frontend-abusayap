@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Card, Col, Row, Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
+import CardTransHistory from '../CardTransHistory'
 import TopUp from '../TopUp'
+import TransactionHistory from '../TransactionHistory'
 import './style.scss'
 
 export default class HomeMenu extends Component {
@@ -49,9 +51,20 @@ export default class HomeMenu extends Component {
               <Switch>
                 <Route exact path="/home-page">
                   <BalanceInfo />
+                  <Row className="pt-3">
+                    <Col md={7}>
+                      <CardTransHistory />
+                    </Col>
+                    <Col>
+                      <CardTransHistory />
+                    </Col>
+                  </Row>
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
+                </Route>
+                <Route path="/home-page/transaction-history">
+                  <TransactionHistory />
                 </Route>
               </Switch>
             </Col>

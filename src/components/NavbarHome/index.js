@@ -3,6 +3,8 @@ import { Navbar, Nav, Image, Container } from 'react-bootstrap'
 import logo from '../../assets/images/abusayap_primary_logo.png'
 import bell from '../../assets/icons/bell.png'
 
+import './NavbarHome.scss'
+
 export default class NavbarHome extends Component {
   render () {
     return (
@@ -16,7 +18,7 @@ export default class NavbarHome extends Component {
             <Image
               src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8ZmFjZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
               height={52}
-              className="img-profile-small"
+              className="img-avatar"
             />
           </Nav.Link>
           <Nav.Link>
