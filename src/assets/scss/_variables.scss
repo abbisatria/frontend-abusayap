@@ -1,9 +1,9 @@
 //Colors
-$primaryColor: #00D16C;
-$secondaryColor: #9DA6B5;
-$errorColor: #FF5B37;
-$succesColor: #677CF4;
-$warningColor: #f4b740;
+$primary: #00D16C;
+$secondary: #9DA6B5;
+$error: #FF5B37;
+$succes: #677CF4;
+$warning: #f4b740;
 
 //Typography Colors
 $titleColor: #14142b;
@@ -14,3 +14,5 @@ $lineColor: #dedede;
 $inputColor: #eff0f7;
 $backgroundColor: #f7f7fc;
 $offWhiteColor: #fcfcfc;
+
+@import "~bootstrap/scss/bootstrap.scss";
