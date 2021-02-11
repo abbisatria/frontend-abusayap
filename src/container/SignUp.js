@@ -22,7 +22,7 @@ export default class SignUp extends Component {
               Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
             <Form>
-              <FormInput div="pt-3" group="inputWithIcon" type="email" placeholder="Enter your username">
+              <FormInput div="pt-3" group="inputWithIcon" type="text" placeholder="Enter your username">
                 <i className="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <FormInput div="py-3" group="inputWithIcon" type="email" placeholder="Enter your e-mail">
@@ -31,7 +31,7 @@ export default class SignUp extends Component {
               <FormInput group="inputWithIcon" type="password" placeholder="Enter your password">
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <Link to='/forgot-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
+              <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
               <Link to='/create-pin' className="pt-5">
                 <ButtonCustom block className="btn-custom">
                     Login
