@@ -3,6 +3,7 @@ import { Card, Col, Row, Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
 import CardTransHistory from '../CardTransHistory'
+import ChangePassword from '../ChangePassword'
 import TopUp from '../TopUp'
 import TransactionHistory from '../TransactionHistory'
 import './style.scss'
@@ -65,6 +66,9 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/transaction-history">
                   <TransactionHistory />
+                </Route>
+                <Route path="/home-page/profile/change-password">
+                  <ChangePassword />
                 </Route>
               </Switch>
             </Col>
