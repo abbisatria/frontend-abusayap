@@ -7,6 +7,9 @@ import InputAmount from '../InputAmount'
 import TopUp from '../TopUp'
 import Profile from '../Profile'
 import PersonalInfo from '../PersonalInfo'
+import CardTransHistory from '../CardTransHistory'
+import ChangePassword from '../ChangePassword'
+import TransactionHistory from '../TransactionHistory'
 import './style.scss'
 
 export default class HomeMenu extends Component {
@@ -53,6 +56,14 @@ export default class HomeMenu extends Component {
               <Switch>
                 <Route exact path="/home-page">
                   <BalanceInfo />
+                  <Row className="pt-3">
+                    <Col md={7}>
+                      <CardTransHistory />
+                    </Col>
+                    <Col>
+                      <CardTransHistory />
+                    </Col>
+                  </Row>
                 </Route>
                 <Route path="/home-page/contact">
                   <Contact />
@@ -68,6 +79,12 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/profile/personal-info">
                   <PersonalInfo />
+                </Route>
+                <Route path="/home-page/transaction-history">
+                  <TransactionHistory />
+                </Route>
+                <Route path="/home-page/profile/change-password">
+                  <ChangePassword />
                 </Route>
               </Switch>
             </Col>

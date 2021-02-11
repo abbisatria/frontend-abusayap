@@ -1,11 +1,8 @@
-@import '../../assets/scss/mixin';
-
-.text-phone-small{
-  @include text-large-18()
-}
-
-.nav-home {
-  img {
-    border-radius: 10px;
-  }
+.img-avatar {
+  border-radius: 10px !important;
+  width: 56px;
+  height: 56px;
+	object-fit: cover;
+	object-position: center;
+	display: block;
 }

@@ -26,7 +26,7 @@ Password In a Minutes.</p>
               <FormInput div="pb-5" group="inputWithIcon" type="password" placeholder="Enter your password">
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <Link to='/home-page' className="pt-5">
+              <Link to='/login' className="pt-5">
                 <ButtonCustom block className="btn-custom">
                     Reset Password
                 </ButtonCustom>
