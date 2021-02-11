@@ -1,0 +1,45 @@
+@import '../../assets/scss/variables';
+
+.card-menu {
+  border-radius: 25px !important;
+}
+.bg-gray {
+  background-color: rgb(245, 245, 245);
+}
+  ul {
+	padding: 0px;
+	list-style: none;
+  position: relative;
+    li {
+      padding-top: 20px;
+	    list-style-type: none;
+      .text-menu {
+        padding: 0 70px;
+        color: $secondary;
+      }
+      .text-menu:focus{
+        color: $primary;
+      }
+      .text-menu:focus + i{
+        color: $primary;
+      }
+      i {
+        color: $secondary;
+        position: absolute;
+        bottom: 5px;
+        left: 25px;
+        transition: 0.3s;
+      }
+    }
+  }
+
+.left-line:focus {
+    border: none;
+    border-left-style: solid;
+    border-left-color: $primary;
+    border-left-width: 4px;
+}
+
+.logout {
+  padding-top: 200px;
+}
