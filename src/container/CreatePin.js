@@ -26,7 +26,6 @@ That You Created Yourself.</p>
               <PinInput
                 length={6}
                 initialValue=""
-                secret
                 onChange={(value, index) => {}}
                 type="numeric"
                 inputMode="number"
