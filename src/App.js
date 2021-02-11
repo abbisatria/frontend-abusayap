@@ -1,9 +1,7 @@
 import Route from '../src/config/Route'
 
-function App () {
+export default function App () {
   return (
     <Route />
   )
 }
-
-export default App

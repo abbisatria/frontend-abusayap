@@ -158,6 +158,8 @@
 	font-size: 10px;
 }
 
+
+// Import Bootstrap and its default variables
 // change the theme
 $primary: #00D16C;
 $secondary: #9DA6B5;
@@ -165,5 +167,4 @@ $error: #FF5B37;
 $succes: #677CF4;
 $warning: #f4b740;
 
-// Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";

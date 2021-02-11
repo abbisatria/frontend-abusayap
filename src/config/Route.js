@@ -7,6 +7,7 @@ import Login from '../pages/LoginPage'
 import SignUp from '../pages/SignUpPage'
 import CreatePin from '../pages/CreatePinPage'
 import ResetPassword from '../pages/ResetPasswordPage'
+import LandingPage from '../pages/LandingPage'
 
 export default class App extends Component {
   render () {
@@ -14,6 +15,7 @@ export default class App extends Component {
       <BrowserRouter>
         <ScrollToTop />
         <Switch>
+          <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/create-pin" component={CreatePin} />
