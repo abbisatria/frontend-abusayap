@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import './Jumbotron.css'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Logo from '../../assets/images/Logo.png'
 import AppDisplay from '../../assets/images/phone.png'
 
@@ -16,8 +16,8 @@ export default class index extends Component {
             </div>
           </Col>
           <Col lg={3} className="text-center p-0">
-            <Button variant="light" className="HeroBtnLogin">Login</Button>
-            <Button variant="light" className="HeroBtnSignUp">Sign Up</Button>
+            <Link to="/login"><Button variant="light" className="HeroBtnLogin">Login</Button></Link>
+            <Link to="/sign-up"><Button variant="light" className="HeroBtnSignUp">Sign Up</Button></Link>
           </Col>
         </Row>
         <Row>
