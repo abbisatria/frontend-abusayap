@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from '../pages/LoginPage'
 import SignUp from '../pages/SignUpPage'
 import CreatePin from '../pages/CreatePinPage'
+import ResetPassword from '../pages/ResetPasswordPage'
 
 export default class App extends Component {
   render () {
@@ -16,6 +17,7 @@ export default class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/create-pin" component={CreatePin} />
+          <Route path="/reset-password" component={ResetPassword} />
         </Switch>
       </BrowserRouter>
     )
