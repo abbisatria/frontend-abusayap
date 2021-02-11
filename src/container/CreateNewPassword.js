@@ -5,7 +5,7 @@ import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import FormInput from '../components/Form/FormInput'
 
-export default class ResetPassword extends Component {
+export default class CreateNewPassword extends Component {
   render () {
     return (
       <Row>
@@ -18,14 +18,17 @@ export default class ResetPassword extends Component {
 Don’t Worry, You Can Reset Your
 Password In a Minutes.</p>
             <p>
-              To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</p>
+              Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.</p>
             <Form>
-              <FormInput div="pt-3 pb-5" group="inputWithIcon" type="email" placeholder="Enter your e-mail">
-                <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+              <FormInput div="py-3" group="inputWithIcon" type="password" placeholder="Enter your password">
+                <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <Link to='/create-new-password' className="pt-5">
+              <FormInput div="pb-5" group="inputWithIcon" type="password" placeholder="Enter your password">
+                <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+              </FormInput>
+              <Link to='/home-page' className="pt-5">
                 <ButtonCustom block className="btn-custom">
-                    Confirm
+                    Reset Password
                 </ButtonCustom>
               </Link>
             </Form>

@@ -8,6 +8,9 @@ import SignUp from '../pages/SignUpPage'
 import CreatePin from '../pages/CreatePinPage'
 import ResetPassword from '../pages/ResetPasswordPage'
 import LandingPage from '../pages/LandingPage'
+import Home from '../pages/HomePage'
+import Pin from '../pages/PinSuccessPage'
+import CreateNewPassword from '../pages/CreateNewPasswordPage'
 
 export default class App extends Component {
   render () {
@@ -20,6 +23,9 @@ export default class App extends Component {
           <Route path="/sign-up" component={SignUp} />
           <Route path="/create-pin" component={CreatePin} />
           <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/home-page" component={Home} />
+          <Route path="/pin-success" component={Pin} />
+          <Route path="/create-new-password" component={CreateNewPassword} />
         </Switch>
       </BrowserRouter>
     )

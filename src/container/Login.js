@@ -28,8 +28,8 @@ export default class Login extends Component {
               <FormInput group="inputWithIcon" type="password" placeholder="Enter your password">
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <Link to='/forgot-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
-              <Link to='/create-pin' className="pt-5">
+              <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
+              <Link to='/home-page' className="pt-5">
                 <ButtonCustom block className="btn-custom">
                     Login
                 </ButtonCustom>

@@ -8,8 +8,12 @@ import './style.css'
 const LeftAuth = () => {
   return (
     <Container>
-      <Image src={logo} width={170}/>
-      <Image src={screenHp} height={575} />
+      <div>
+        <Image src={logo} width={170}/>
+      </div>
+      <div className="d-flex justify-content-center align-content-center">
+        <Image src={screenHp} height={450} />
+      </div>
       <p className="text-white text-display-xs-bold">App that Covering Banking Needs.</p>
       <p className="text-white">Abusayap is an application that focussing in banking needs for all users
         in the world. Always updated and always following world trends.
