@@ -20,7 +20,7 @@ export default class PinSuccess extends Component {
               Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</p>
 
             <Link to='/login'>
-              <ButtonCustom block className="btn-custom">
+              <ButtonCustom block >
                   Login Now
               </ButtonCustom>
             </Link>

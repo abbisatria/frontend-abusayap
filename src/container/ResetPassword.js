@@ -24,7 +24,7 @@ Password In a Minutes.</p>
                 <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <Link to='/create-new-password' className="pt-5">
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Confirm
                 </ButtonCustom>
               </Link>

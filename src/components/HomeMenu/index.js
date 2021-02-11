@@ -11,6 +11,7 @@ import CardTransHistory from '../CardTransHistory'
 import ChangePassword from '../ChangePassword'
 import TransactionHistory from '../TransactionHistory'
 import './style.scss'
+import ChangePin from '../ChangePin'
 
 export default class HomeMenu extends Component {
   render () {
@@ -85,6 +86,9 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/profile/change-password">
                   <ChangePassword />
+                </Route>
+                <Route path="/home-page/profile/change-pin">
+                  <ChangePin />
                 </Route>
               </Switch>
             </Col>

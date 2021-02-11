@@ -32,7 +32,7 @@ export default class SignUp extends Component {
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <Link to='/create-pin'>
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Sign Up
                 </ButtonCustom>
               </Link>

@@ -27,7 +27,7 @@ Password In a Minutes.</p>
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <Link to='/login' className="pt-5">
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Reset Password
                 </ButtonCustom>
               </Link>
