@@ -34,7 +34,7 @@ export default class SignUp extends Component {
               <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
               <Link to='/create-pin' className="pt-5">
                 <ButtonCustom block className="btn-custom">
-                    Login
+                    Sign Up
                 </ButtonCustom>
               </Link>
               <p className="text-center pt-4">Already have an account? Let’s <Link to='/login'><b>Login</b></Link> </p>

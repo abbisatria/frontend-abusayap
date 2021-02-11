@@ -21,7 +21,7 @@ That You Created Yourself.</p>
               Create 6 digits pin to secure all your money and your data in Zwallet app. Keep it secret and don’t tell anyone about your Zwallet account password and the PIN.</p>
             <Form>
               <div
-                className="d-flex justify-content-center align-content-center">
+                className="d-flex justify-content-center align-content-center pt-4 pb-5">
 
               <PinInput
                 length={6}
@@ -38,7 +38,7 @@ That You Created Yourself.</p>
                 regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                 />
                 </div>
-              <Link to='/home-page'>
+              <Link to='/pin-success'>
                 <ButtonCustom block className="btn-custom">
                     Confirm
                 </ButtonCustom>
