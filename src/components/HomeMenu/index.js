@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Card, Col, Row, Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
+import Contact from '../Contact'
+import InputAmount from '../InputAmount'
 import TopUp from '../TopUp'
 import './style.scss'
 
@@ -21,7 +23,7 @@ export default class HomeMenu extends Component {
                 </ul>
                 <ul>
                   <li>
-                    <Link to="/home-page" className="text-menu left-line">Transfer</Link>
+                    <Link to="/home-page/contact" className="text-menu left-line">Transfer</Link>
                     <i className="fa fa-arrow-up fa-lg fa-fw" aria-hidden="true"></i>
                   </li>
                 </ul>
@@ -49,6 +51,12 @@ export default class HomeMenu extends Component {
               <Switch>
                 <Route exact path="/home-page">
                   <BalanceInfo />
+                </Route>
+                <Route path="/home-page/contact">
+                  <Contact />
+                </Route>
+                <Route path="/home-page/contact/input-amount">
+                  <InputAmount />
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
