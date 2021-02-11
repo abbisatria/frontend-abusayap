@@ -3,6 +3,8 @@ import { Navbar, Nav, Image, Container } from 'react-bootstrap'
 import logo from '../../assets/images/abusayap_primary_logo.png'
 import bell from '../../assets/icons/bell.png'
 
+import './NavbarHome.scss'
+
 export default class NavbarHome extends Component {
   render () {
     return (

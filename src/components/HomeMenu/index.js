@@ -3,6 +3,8 @@ import { Card, Col, Row, Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
 import TopUp from '../TopUp'
+import Profile from '../Profile'
+import PersonalInfo from '../PersonalInfo'
 import './style.scss'
 
 export default class HomeMenu extends Component {
@@ -33,7 +35,7 @@ export default class HomeMenu extends Component {
                 </ul>
                 <ul>
                   <li>
-                    <Link to="/home-page" className="text-menu left-line">Profile</Link>
+                    <Link to="/home-page/profile" className="text-menu left-line">Profile</Link>
                     <i className="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                   </li>
                 </ul>
@@ -52,6 +54,12 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
+                </Route>
+                <Route exact path="/home-page/profile">
+                  <Profile />
+                </Route>
+                <Route path="/home-page/profile/personal-info">
+                  <PersonalInfo />
                 </Route>
               </Switch>
             </Col>
