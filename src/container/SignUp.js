@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
 
 export default class SignUp extends Component {
   signUpPush = async (values) => {
-    // nanti kasih reload & push router bisa disini
+    // action bisa disini
     console.log(values)
   }
   render () {
@@ -50,6 +50,7 @@ export default class SignUp extends Component {
 
                   setTimeout(() => {
                     // disini logicnya puat push
+                    // action bisa disini
                     this.signUpPush(values)
                     resetForm()
                     setSubmitting(false)
