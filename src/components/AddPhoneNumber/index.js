@@ -15,7 +15,7 @@ export default class AddPhoneNumber extends Component {
           <p className="text-sm">Add at least one phone number for the transfer <br/> ID so you can start transfering your money to <br/> another user.</p>
           <div className="col-7 mx-auto">
           <Form>
-            <FormInputNumber placeholder="Enter your phone number" />
+            <FormInputNumber type="number" placeholder="Enter your phone number" />
             <ButtonCustom block >
                 Add Phone Number
             </ButtonCustom>
