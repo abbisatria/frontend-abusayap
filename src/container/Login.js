@@ -10,12 +10,12 @@ export default class Login extends Component {
     return (
       <Row>
         <Col md={7} className="d-none d-md-block auth-img p-5">
-          <LeftAuth/>
+          <LeftAuth />
         </Col>
         <Col md={5} className="p-5">
           <Container>
             <p className="text-display-xs-bold">Start Accessing Banking Needs
-              With All Devices and All Platforms
+            With All Devices and All Platforms
               With 30.000+ Users</p>
             <p>
               Transfering money is eassier than ever, you can access Zwallet wherever you are.
@@ -31,7 +31,7 @@ export default class Login extends Component {
               <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
               <Link to='/home-page' className="pt-5">
                 <ButtonCustom block className="btn-custom">
-                    Login
+                  Login
                 </ButtonCustom>
               </Link>
               <p className="text-center pt-4">Don’t have an account? Let’s <Link to='/sign-up'><b>Sign up</b></Link> </p>
