@@ -28,11 +28,10 @@ export default class SignUp extends Component {
               <FormInput div="py-3" group="inputWithIcon" type="email" placeholder="Enter your e-mail">
                 <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <FormInput group="inputWithIcon" type="password" placeholder="Enter your password">
+              <FormInput div="pb-5" group="inputWithIcon" type="password" placeholder="Enter your password">
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
-              <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
-              <Link to='/create-pin' className="pt-5">
+              <Link to='/create-pin'>
                 <ButtonCustom block className="btn-custom">
                     Sign Up
                 </ButtonCustom>
