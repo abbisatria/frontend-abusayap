@@ -69,7 +69,7 @@ export default class HomeMenu extends Component {
                     </Col>
                   </Row>
                 </Route>
-                <Route path="/home-page/contact">
+                <Route exact path="/home-page/contact">
                   <Contact />
                 </Route>
                 <Route path="/home-page/contact/input-amount">

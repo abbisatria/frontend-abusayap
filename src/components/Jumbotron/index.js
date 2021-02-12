@@ -16,7 +16,7 @@ export default class index extends Component {
             </div>
           </Col>
           <Col lg={3} className="text-center p-0">
-            <Link to="/login"><Button variant="light" className="HeroBtnLogin">Login</Button></Link>
+            <Link to="/login"><Button variant="outline-light" className="HeroBtnLogin">Login</Button></Link>
             <Link to="/sign-up"><Button variant="light" className="HeroBtnSignUp">Sign Up</Button></Link>
           </Col>
         </Row>
