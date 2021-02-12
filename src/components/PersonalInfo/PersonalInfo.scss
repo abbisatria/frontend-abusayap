@@ -31,13 +31,16 @@
       border: none;
       margin-left: -10px;
     }
+
     .form-control:focus {
       border-color: $primary;
       transition: 0.4s;
     }
+
     .form-control:disabled {
       background-color: #ffffff;
       border: none;
     }
   }
+
 }

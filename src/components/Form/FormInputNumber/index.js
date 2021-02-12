@@ -4,7 +4,7 @@ import { Telephone } from 'react-bootstrap-icons'
 import './style.scss'
 
 const FormInputNumber = (props) => {
-  const { name, type, placeholder, onChange, defaultValue } = props
+  const { name, type, placeholder, onChange, value, defaultValue, isValid, onBlur } = props
   return (
     <InputGroup className="mb-3">
       <InputGroup.Prepend>
@@ -20,6 +20,9 @@ const FormInputNumber = (props) => {
         placeholder={placeholder}
         onChange={onChange}
         defaultValue={defaultValue}
+        onBlur={onBlur}
+        isValid={isValid}
+        value={value}
         required
       />
     </InputGroup>
