@@ -39,7 +39,7 @@ export default class Login extends Component {
                 Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
               <Formik
-                initialValues={{ name: '', email: '', password: '' }}
+                initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   setSubmitting(true)
