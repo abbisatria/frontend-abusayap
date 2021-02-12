@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
 import Contact from '../Contact'
 import InputAmount from '../InputAmount'
+import DetailTransaction from '../DetailTransfer'
 import TopUp from '../TopUp'
 import Profile from '../Profile'
 import PersonalInfo from '../PersonalInfo'
@@ -68,8 +69,11 @@ export default class HomeMenu extends Component {
                 <Route exact path="/home-page/contact">
                   <Contact />
                 </Route>
-                <Route path="/home-page/contact/input-amount">
+                <Route exact path="/home-page/contact/input-amount">
                   <InputAmount />
+                </Route>
+                <Route path="/home-page/contact/input-amount/detail-transfer">
+                  <DetailTransaction />
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
