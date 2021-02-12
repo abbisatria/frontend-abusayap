@@ -3,10 +3,11 @@ import { Navbar, Nav, Image, Container, DropdownButton } from 'react-bootstrap'
 import logo from '../../assets/images/abusayap_primary_logo.png'
 import bell from '../../assets/icons/bell.png'
 import CardNotif from '../CardNotif'
+import { connect } from 'react-redux'
 
 import './NavbarHome.scss'
 
-export default class NavbarHome extends Component {
+class NavbarHome extends Component {
   render () {
     return (
       <Navbar className="nav-home">
@@ -23,13 +24,13 @@ export default class NavbarHome extends Component {
             />
           </Nav.Link>
           <Nav.Link>
-            <p className="m-0 text-phone-small">Robert Chandler</p>
+            <p className="m-0 text-phone-small">{`${this.props.auth.user.firstname} ${this.props.auth.user.lastname}`}</p>
             <p className="m-0">+62 8139 3877 7946</p>
           </Nav.Link>
           <DropdownButton
             menuAlign="right"
             title={<Image src={bell} height={24} />}
-            variant="light"
+            variant="transparent"
           >
             <CardNotif />
           </DropdownButton>
@@ -39,3 +40,9 @@ export default class NavbarHome extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(NavbarHome)

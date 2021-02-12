@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Col, Row, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import FormInput from '../components/Form/FormInput'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+
+import { connect } from 'react-redux'
+import { login } from '../redux/action/auth'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,11 +20,32 @@ const validationSchema = Yup.object().shape({
     .required('Password is required')
 })
 
-export default class Login extends Component {
+class Login extends Component {
   loginPush = async (values) => {
-    // action bisa disini
-    console.log(values)
+    await this.props.login(values.email, values.password)
+    // if (this.props.auth.token) {
+    //   this.props.history.push('/home-page')
+    // }
+    // console.log(values.email)
   }
+  // componentDidUpdate () {
+  //   console.log(this.props.location)
+  //   if (this.props.auth.token) {
+  //     if (this.props.auth.user.role === 1) {
+  //       if (this.props.location.state === undefined) {
+  //         this.props.history.push('/admin')
+  //       } else {
+  //         this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
+  //       }
+  //     } else {
+  //       if (this.props.location.state === undefined) {
+  //         this.props.history.push('/home-page')
+  //       } else {
+  //         this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
+  //       }
+  //     }
+  //   }
+  // }
   render () {
     return (
       <div className='container-fluid'>
@@ -41,13 +65,20 @@ export default class Login extends Component {
               <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting, resetForm }) => {
+                onSubmit={ (values, { setSubmitting, resetForm }) => {
                   setSubmitting(true)
-
+                  // await this.loginPush(values)
+                  // resetForm()
+                  // resetForm()
+                  // setSubmitting(false)
                   setTimeout(() => {
                     // disini logicnya puat push
                     // action bisa disini
                     this.loginPush(values)
+                    if (this.props.auth.token) {
+                      this.props.history.push('/home-page')
+                    }
+                    // this.loginPush(values)
                     resetForm()
                     setSubmitting(false)
                   }, 500)
@@ -94,13 +125,12 @@ export default class Login extends Component {
                     <ButtonCustom block className="btn-custom"
                       type="submit" disabled={isSubmitting}
                     >
-                      Sign Up
+                      Login
                   </ButtonCustom>
                     <p className="text-center pt-4">Don’t have an account? Let’s <Link to='/sign-up'><b>Sign Up</b></Link> </p>
                   </Form>
                 )}
               </Formik>
-
             </Container>
           </Col>
         </Row>
@@ -108,3 +138,11 @@ export default class Login extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapDispatchToProps = { login }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login))

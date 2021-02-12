@@ -77,7 +77,7 @@ export default class HomeMenu extends Component {
                 <Route exact path="/home-page/contact/input-amount">
                   <InputAmount />
                 </Route>
-                <Route path="/home-page/contact/input-amount/detail-transfer">
+                <Route exact path="/home-page/contact/input-amount/detail-transfer">
                   <DetailTransaction />
                 </Route>
                 <Route path="/home-page/contact/input-amount/detail-transfer/result-transaction">

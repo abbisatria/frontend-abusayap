@@ -22,6 +22,9 @@ class index extends Component {
             </Form>
             <div>
               <CardContact onClick={() => this.goToTransaction()} />
+              <CardContact onClick={() => this.goToTransaction()} />
+              <CardContact onClick={() => this.goToTransaction()} />
+              <CardContact onClick={() => this.goToTransaction()} />
             </div>
           </Col>
         </Row>

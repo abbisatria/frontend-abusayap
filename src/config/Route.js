@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-// import PrivateRoute from '../src/config/PrivateRoute'
+import PrivateRoute from './PrivateRoute'
+import { Provider } from 'react-redux'
+import persistedStore from '../redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
 // import PublicRoute from '../src/config/PublicRoute'
 import ScrollToTop from './ScrollToTop'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
@@ -14,20 +17,25 @@ import CreateNewPassword from '../pages/CreateNewPasswordPage'
 
 export default class App extends Component {
   render () {
+    const { store, persistor } = persistedStore()
     return (
-      <BrowserRouter>
-        <ScrollToTop />
-        <Switch>
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/login" component={Login} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/create-pin" component={CreatePin} />
-          <Route path="/reset-password" component={ResetPassword} />
-          <Route path="/home-page" component={Home} />
-          <Route path="/pin-success" component={Pin} />
-          <Route path="/create-new-password" component={CreateNewPassword} />
-        </Switch>
-      </BrowserRouter>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Switch>
+              <Route path="/" exact component={LandingPage} />
+              <Route path="/login" component={Login} />
+              <Route path="/sign-up" component={SignUp} />
+              <Route path="/create-pin" component={CreatePin} />
+              <Route path="/reset-password" component={ResetPassword} />
+              <PrivateRoute path="/home-page" privateComponent={Home} />
+              <Route path="/pin-success" component={Pin} />
+              <Route path="/create-new-password" component={CreateNewPassword} />
+            </Switch>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
     )
   }
 }
