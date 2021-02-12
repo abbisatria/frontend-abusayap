@@ -7,7 +7,7 @@ import LeftAuth from '../components/LeftAuth'
 export default class ResetPassword extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth />
         </Col>

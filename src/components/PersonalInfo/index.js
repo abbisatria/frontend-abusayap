@@ -36,7 +36,7 @@ export default class PersonalInfo extends Component {
               <Form.Label>Phone Number</Form.Label>
               <div className="d-flex justify-content-between">
                 <Form.Control type="text" defaultValue="+62 813-9387-7946" disabled />
-                <Link to="/home-page/profile/personal-info/phone-number">Manage</Link>
+                <Link to="/home-page/profile/personal-info/manage-phone-number">Manage</Link>
               </div>
             </Form.Group>
           </div>

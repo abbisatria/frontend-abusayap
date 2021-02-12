@@ -8,7 +8,7 @@ import FormInput from '../components/Form/FormInput'
 export default class CreateNewPassword extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
@@ -27,7 +27,7 @@ Password In a Minutes.</p>
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <Link to='/login' className="pt-5">
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Reset Password
                 </ButtonCustom>
               </Link>

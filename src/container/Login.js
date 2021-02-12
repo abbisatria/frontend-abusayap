@@ -8,7 +8,7 @@ import FormInput from '../components/Form/FormInput'
 export default class Login extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
@@ -30,7 +30,7 @@ export default class Login extends Component {
               </FormInput>
               <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
               <Link to='/home-page' className="pt-5">
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Login
                 </ButtonCustom>
               </Link>
