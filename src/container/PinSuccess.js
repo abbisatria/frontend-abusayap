@@ -8,7 +8,7 @@ import successLogo from '../assets/icons/success.png'
 export default class PinSuccess extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
