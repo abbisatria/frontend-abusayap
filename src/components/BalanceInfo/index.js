@@ -17,7 +17,7 @@ export default class index extends Component {
               <div className="BalanceInfoPhone">+62 813-9387-7946</div>
             </Col>
             <Col className="BalanceInfoCol">
-                <Link to="/home-page/transfer" className="BalanceBtnTransfer">
+                <Link to="/home-page/contact" className="BalanceBtnTransfer">
                   <span className="mr-2"><img src={Transfer} alt="TransIcon" /></span>
                   Transfer
                 </Link>

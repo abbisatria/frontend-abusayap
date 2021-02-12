@@ -5,6 +5,7 @@ import BalanceInfo from '../BalanceInfo'
 import Contact from '../Contact'
 import InputAmount from '../InputAmount'
 import DetailTransaction from '../DetailTransfer'
+import Result from '../ResultTransaction'
 import TopUp from '../TopUp'
 import Profile from '../Profile'
 import PersonalInfo from '../PersonalInfo'
@@ -78,6 +79,9 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/contact/input-amount/detail-transfer">
                   <DetailTransaction />
+                </Route>
+                <Route path="/home-page/contact/input-amount/detail-transfer/result-transaction">
+                  <Result />
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
