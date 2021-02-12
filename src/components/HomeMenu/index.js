@@ -14,6 +14,7 @@ import './style.scss'
 import ChangePin from '../ChangePin'
 import AddPhoneNumber from '../AddPhoneNumber'
 import ManagePhoneNumber from '../ManagePhoneNumber'
+import TotalTransaction from '../TotalTransaction'
 
 export default class HomeMenu extends Component {
   render () {
@@ -61,7 +62,7 @@ export default class HomeMenu extends Component {
                   <BalanceInfo />
                   <Row className="pt-3">
                     <Col md={7}>
-                      <CardTransHistory />
+                      <TotalTransaction />
                     </Col>
                     <Col>
                       <CardTransHistory />

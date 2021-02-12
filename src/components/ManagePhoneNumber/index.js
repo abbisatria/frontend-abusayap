@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import './style.scss'
 
-export default class ManagePhoneNumber extends Component {
+class ManagePhoneNumber extends Component {
   render () {
     return (
       <Card className="card-menu border-0">
@@ -12,7 +13,7 @@ export default class ManagePhoneNumber extends Component {
           <Card className="card-menu border-0 shadow-sm pt-3">
             <Card.Body className="py-0">
               <div className="d-flex justify-content-between pt-3">
-                <div>
+                <div onClick={() => this.props.history.push('/home-page/profile/personal-info/manage-phone-number/add-phone-number')} className="phone-div">
                   <p className="text-sm mb-1">Primary</p>
                   <p className="text-display-xs-bold-22">+62 813 9387 7946</p>
                 </div>
@@ -25,3 +26,5 @@ export default class ManagePhoneNumber extends Component {
     )
   }
 }
+
+export default withRouter(ManagePhoneNumber)

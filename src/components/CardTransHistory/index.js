@@ -14,7 +14,7 @@ export default class CardTransHistory extends Component {
   render () {
     const { listTransfer } = this.state
     return (
-      <Card className="card-menu border-0">
+      <Card className="card-menu border-0" style={{ height: '100%' }}>
         <Card.Body>
           <div className="d-flex justify-content-between">
             <p className="text-display-xs-bold-18">Transaction History</p>
