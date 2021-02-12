@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Card, Image, Pagination } from 'react-bootstrap'
+import { Card, Image, Pagination, Form } from 'react-bootstrap'
+import FormSearch from '../Form/FormSearch'
 // import { Link } from 'react-router-dom'
 
 import listTransfer from '../../utils/listTransfer'
@@ -16,6 +17,11 @@ export default class TransactionHistory extends Component {
       <Card className="card-menu border-0">
         <Card.Body>
           <p className="text-display-xs-bold-18">Transaction History</p>
+          <Form className="my-3">
+            <FormSearch group="searchIcon" type="text" placeholder="Search receiver here" className="ContactInputSearch">
+              <i className="fa fa-search" aria-hidden="true"></i>
+            </FormSearch>
+          </Form>
           {listTransfer.map((item) => {
             return (
               <div key={item.id}>

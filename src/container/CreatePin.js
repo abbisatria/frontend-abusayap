@@ -8,7 +8,7 @@ import PinInput from 'react-pin-input'
 export default class CreatePin extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
@@ -22,7 +22,6 @@ That You Created Yourself.</p>
             <Form>
               <div
                 className="d-flex justify-content-center align-content-center pt-4 pb-5">
-
               <PinInput
                 length={6}
                 initialValue=""
@@ -38,7 +37,7 @@ That You Created Yourself.</p>
                 />
                 </div>
               <Link to='/pin-success'>
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Confirm
                 </ButtonCustom>
               </Link>

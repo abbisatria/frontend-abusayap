@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, Image, Container } from 'react-bootstrap'
+import { Navbar, Nav, Image, Container, DropdownButton } from 'react-bootstrap'
 import logo from '../../assets/images/abusayap_primary_logo.png'
 import bell from '../../assets/icons/bell.png'
+import CardNotif from '../CardNotif'
 
 import './NavbarHome.scss'
 
@@ -25,9 +26,13 @@ export default class NavbarHome extends Component {
             <p className="m-0 text-phone-small">Robert Chandler</p>
             <p className="m-0">+62 8139 3877 7946</p>
           </Nav.Link>
-          <Nav.Link>
-            <Image src={bell} height={24} />
-          </Nav.Link>
+          <DropdownButton
+            menuAlign="right"
+            title={<Image src={bell} height={24} />}
+            variant="light"
+          >
+            <CardNotif />
+          </DropdownButton>
         </Nav>
         </Container>
       </Navbar>

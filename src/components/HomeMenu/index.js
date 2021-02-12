@@ -13,6 +13,10 @@ import CardTransHistory from '../CardTransHistory'
 import ChangePassword from '../ChangePassword'
 import TransactionHistory from '../TransactionHistory'
 import './style.scss'
+import ChangePin from '../ChangePin'
+import AddPhoneNumber from '../AddPhoneNumber'
+import ManagePhoneNumber from '../ManagePhoneNumber'
+import TotalTransaction from '../TotalTransaction'
 
 export default class HomeMenu extends Component {
   render () {
@@ -60,7 +64,7 @@ export default class HomeMenu extends Component {
                   <BalanceInfo />
                   <Row className="pt-3">
                     <Col md={7}>
-                      <CardTransHistory />
+                      <TotalTransaction />
                     </Col>
                     <Col>
                       <CardTransHistory />
@@ -85,7 +89,7 @@ export default class HomeMenu extends Component {
                 <Route exact path="/home-page/profile">
                   <Profile />
                 </Route>
-                <Route path="/home-page/profile/personal-info">
+                <Route exact path="/home-page/profile/personal-info">
                   <PersonalInfo />
                 </Route>
                 <Route path="/home-page/transaction-history">
@@ -93,6 +97,15 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/profile/change-password">
                   <ChangePassword />
+                </Route>
+                <Route path="/home-page/profile/change-pin">
+                  <ChangePin />
+                </Route>
+                <Route exact path="/home-page/profile/personal-info/manage-phone-number">
+                  <ManagePhoneNumber />
+                </Route>
+                <Route path="/home-page/profile/personal-info/manage-phone-number/add-phone-number">
+                  <AddPhoneNumber />
                 </Route>
               </Switch>
             </Col>

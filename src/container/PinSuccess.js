@@ -8,7 +8,7 @@ import successLogo from '../assets/icons/success.png'
 export default class PinSuccess extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
@@ -20,7 +20,7 @@ export default class PinSuccess extends Component {
               Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</p>
 
             <Link to='/login'>
-              <ButtonCustom block className="btn-custom">
+              <ButtonCustom block >
                   Login Now
               </ButtonCustom>
             </Link>

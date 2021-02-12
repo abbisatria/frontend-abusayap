@@ -8,7 +8,7 @@ import FormInput from '../components/Form/FormInput'
 export default class SignUp extends Component {
   render () {
     return (
-      <Row>
+      <Row className="container-fluid">
         <Col md={7} className="d-none d-md-block auth-img p-5">
           <LeftAuth/>
         </Col>
@@ -32,7 +32,7 @@ export default class SignUp extends Component {
                 <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
               </FormInput>
               <Link to='/create-pin'>
-                <ButtonCustom block className="btn-custom">
+                <ButtonCustom block >
                     Sign Up
                 </ButtonCustom>
               </Link>

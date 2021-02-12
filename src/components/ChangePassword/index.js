@@ -23,7 +23,7 @@ export default class ChangePassword extends Component {
               <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
             </FormInput>
             <Link to='/login'>
-              <ButtonCustom block className="btn-custom">
+              <ButtonCustom block >
                   Reset Password
               </ButtonCustom>
             </Link>

@@ -1,0 +1,14 @@
+@import '../../../assets/scss/variables';
+
+.input-num-icon {
+  background-color: #fff !important;
+}
+.input-num {
+  border-top:none !important;
+  border-right:none !important;
+  border-left:none !important;
+  border-bottom:2px solid $secondary !important;
+}
+.input-num:focus {
+  border-bottom: 2px solid $primary !important;
+}
