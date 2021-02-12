@@ -32,6 +32,30 @@ const authReducer = (state = initialState, action) => {
         message: action.payload
       }
     }
+    case 'UPDATE_USER': {
+      return {
+        ...state,
+        user: {
+          id: action.payload.id !== undefined ? action.payload.id : state.user.id,
+          email: action.payload.email !== undefined ? action.payload.email : state.user.email,
+          role: action.payload.role !== undefined ? action.payload.role : state.user.role,
+          firstname: action.payload.firstname !== undefined ? action.payload.firstname : state.user.firstname,
+          lastname: action.payload.lastname !== undefined ? action.payload.lastname : state.user.lastname,
+          phoneNumber: action.payload.phoneNumber !== undefined ? action.payload.phoneNumber : state.user.phoneNumber,
+          picture: action.payload.picture !== undefined ? action.payload.picture : state.user.picture
+        },
+        message: action.message
+      }
+    }
+    case 'LOGOUT': {
+      return {
+        ...state,
+        token: null,
+        user: null,
+        message: '',
+        errorMsg: ''
+      }
+    }
     case 'SET_AUTH_MESSAGE': {
       return {
         ...state,

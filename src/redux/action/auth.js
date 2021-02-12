@@ -102,3 +102,58 @@ export const resetPassword = (token, password) => {
     }
   }
 }
+
+export const updateUser = (id, pin, password, newPassword, firstname, lastname, balance, email, phoneNumber, picture) => {
+  return async dispatch => {
+    const params = new FormData()
+    if (pin !== '') {
+      params.append('pin', pin)
+    }
+    if (password !== '') {
+      params.append('password', password)
+    }
+    if (newPassword !== '') {
+      params.append('newPassword', newPassword)
+    }
+    if (firstname !== '') {
+      params.append('firstname', firstname)
+    }
+    if (lastname !== '') {
+      params.append('lastname', lastname)
+    }
+    if (balance !== '') {
+      params.append('balance', balance)
+    }
+    if (email !== '') {
+      params.append('email', email)
+    }
+    if (phoneNumber !== '') {
+      params.append('phoneNumber', phoneNumber)
+    }
+    if (picture !== '') {
+      params.append('picture', picture)
+    }
+    try {
+      dispatch({
+        type: 'SET_AUTH_MESSAGE',
+        payload: ''
+      })
+      const results = await http().post(`user/${id}`, params)
+      dispatch({
+        type: 'UPDATE_USER',
+        payload: results.data.results,
+        message: results.data.message
+      })
+    } catch (err) {
+      const { message } = err.response.data
+      dispatch({
+        type: 'SET_AUTH_MESSAGE',
+        payload: message
+      })
+    }
+  }
+}
+
+export const logout = () => ({
+  type: 'LOGOUT'
+})

@@ -22,17 +22,18 @@ export const detailUser = (id) => {
   }
 }
 
-export const contact = () => {
+export const contact = (search, limit, page, sort, order) => {
   return async dispatch => {
     try {
       dispatch({
         type: 'SET_USER_MESSAGE',
         payload: ''
       })
-      const response = await http().get('contact')
+      const response = await http().get(`contact?search=${search !== undefined ? search : ''}&limit=${limit !== undefined ? limit : 4}&page=${page !== undefined ? page : 1}&sort=${sort !== undefined ? sort : 'id'}&order=${order !== undefined ? order : 'ASC'}`)
       dispatch({
         type: 'CONTACT',
-        payload: response.data.results
+        payload: response.data.results,
+        pageInfo: response.data.pageInfo
       })
     } catch (err) {
       const { message } = err.response.data
