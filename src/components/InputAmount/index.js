@@ -7,7 +7,7 @@ import FormInput from '../Form/FormInput'
 import { Formik, ErrorMessage } from 'formik'
 const errorMessage = {
   color: 'red',
-  'text-align': 'center'
+  textAlign: 'center'
 }
 
 export default class index extends Component {
@@ -17,11 +17,13 @@ export default class index extends Component {
 
   amountValidation (values) {
     const errors = {}
-    const { amountBelance } = this.state
+    const { amountBelance } = this.state // ganti jadi state belancenya ya
     if (!values.amount) {
       errors.amount = 'Amount Required'
-    } else if (values.amount < amountBelance) {
+    } else if (values.amount > amountBelance) {
       errors.amount = 'Balence not enough'
+    } else if (values.amount < 5000) {
+      errors.amount = 'Minimun Transfer Rp. 5000'
     }
 
     if (!values.note) {
@@ -43,7 +45,7 @@ export default class index extends Component {
         <Row>
           <Col>
             <div className="InputAmountTitle">Transfer Money</div>
-            <div className="my-2">
+            <div className="my-3">
               <CardContact />
             </div>
             <div className="InputAmountDetail">

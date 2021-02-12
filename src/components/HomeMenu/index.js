@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import BalanceInfo from '../BalanceInfo'
 import Contact from '../Contact'
 import InputAmount from '../InputAmount'
+import DetailTransaction from '../DetailTransfer'
 import TopUp from '../TopUp'
 import Profile from '../Profile'
 import PersonalInfo from '../PersonalInfo'
@@ -11,6 +12,10 @@ import CardTransHistory from '../CardTransHistory'
 import ChangePassword from '../ChangePassword'
 import TransactionHistory from '../TransactionHistory'
 import './style.scss'
+import ChangePin from '../ChangePin'
+import AddPhoneNumber from '../AddPhoneNumber'
+import ManagePhoneNumber from '../ManagePhoneNumber'
+import TotalTransaction from '../TotalTransaction'
 
 export default class HomeMenu extends Component {
   render () {
@@ -58,7 +63,7 @@ export default class HomeMenu extends Component {
                   <BalanceInfo />
                   <Row className="pt-3">
                     <Col md={7}>
-                      <CardTransHistory />
+                      <TotalTransaction />
                     </Col>
                     <Col>
                       <CardTransHistory />
@@ -68,8 +73,11 @@ export default class HomeMenu extends Component {
                 <Route exact path="/home-page/contact">
                   <Contact />
                 </Route>
-                <Route path="/home-page/contact/input-amount">
+                <Route exact path="/home-page/contact/input-amount">
                   <InputAmount />
+                </Route>
+                <Route path="/home-page/contact/input-amount/detail-transfer">
+                  <DetailTransaction />
                 </Route>
                 <Route path="/home-page/topup">
                   <TopUp />
@@ -77,7 +85,7 @@ export default class HomeMenu extends Component {
                 <Route exact path="/home-page/profile">
                   <Profile />
                 </Route>
-                <Route path="/home-page/profile/personal-info">
+                <Route exact path="/home-page/profile/personal-info">
                   <PersonalInfo />
                 </Route>
                 <Route path="/home-page/transaction-history">
@@ -85,6 +93,15 @@ export default class HomeMenu extends Component {
                 </Route>
                 <Route path="/home-page/profile/change-password">
                   <ChangePassword />
+                </Route>
+                <Route path="/home-page/profile/change-pin">
+                  <ChangePin />
+                </Route>
+                <Route exact path="/home-page/profile/personal-info/manage-phone-number">
+                  <ManagePhoneNumber />
+                </Route>
+                <Route path="/home-page/profile/personal-info/manage-phone-number/add-phone-number">
+                  <AddPhoneNumber />
                 </Route>
               </Switch>
             </Col>

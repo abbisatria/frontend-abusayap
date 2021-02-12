@@ -3,10 +3,10 @@ import { Form } from 'react-bootstrap'
 import './style.scss'
 
 const FormInput = (props) => {
-  const { div, children, group, name, type, placeholder, onChange, defaultValue, value, onBlur } = props
+  const { div, children, group, name, type, controlId, placeholder, isValid, onChange, defaultValue, value, onBlur } = props
   return (
     <div className={div}>
-      <Form.Group className={group}>
+      <Form.Group className={group} controlId={controlId}>
         <Form.Control
           className="shadow-none"
           name={name}
@@ -16,6 +16,7 @@ const FormInput = (props) => {
           defaultValue={defaultValue}
           value={value}
           onBlur={onBlur}
+          isValid={isValid}
           required
         />
         {children}

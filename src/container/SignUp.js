@@ -74,6 +74,7 @@ export default class SignUp extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.name}
+                      isValid={touched.name && !errors.name}
                     >
                       <i className="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                       {touched.name && errors.name
@@ -86,6 +87,7 @@ export default class SignUp extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.email}
+                      isValid={touched.email && !errors.email}
                     >
                       <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
                       {touched.email && errors.email
@@ -98,6 +100,7 @@ export default class SignUp extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.password}
+                      isValid={touched.password && !errors.password}
                     >
                       <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                       {touched.password && errors.password

@@ -65,11 +65,13 @@ export default class Login extends Component {
                   }) => (
                   <Form onSubmit={handleSubmit}>
                     <FormInput div="py-3" type='email' placeholder="Enter your e-mail"
+                      controlId="validationFormik01"
                       group={`inputWithIcon ${touched.email && errors.email ? 'error' : null}`}
                       name='email'
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.email}
+                      isValid={touched.email && !errors.email}
                     >
                       <i className="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
                       {touched.email && errors.email
@@ -82,6 +84,7 @@ export default class Login extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.password}
+                      isValid={touched.password && !errors.password}
                     >
                       <i className="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                       {touched.password && errors.password
