@@ -15,9 +15,9 @@ const CardContact = (props) => {
             alt="Generic placeholder"
           />
           <Media.Body>
-            <p className="my-2 text-display-xs-bold-18">Robert Chandler</p>
+            <p className="my-2 text-display-xs-bold-18">Samuel Suhi</p>
             <p className="m-0 text-sm">
-              +62 8139 3877 7946
+              +62 813-8492-9994
             </p>
           </Media.Body>
         </Media>
