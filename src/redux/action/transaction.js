@@ -95,3 +95,13 @@ export const transactionHistory = (token, search, limit, page, sort, order) => {
     }
   }
 }
+
+export const selectReceiver = (receiver) => ({
+  type: 'SELECT_RECEIVER',
+  payload: receiver
+})
+
+export const confirmation = (value) => ({
+  type: 'CONFIRMATION',
+  payload: value
+})

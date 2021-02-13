@@ -1,5 +1,6 @@
 import React from 'react'
 import { Media, Image } from 'react-bootstrap'
+import defaultProfile from '../../assets/images/default-image.png'
 import './CardContact.css'
 
 const CardContact = (props) => {
@@ -11,13 +12,13 @@ const CardContact = (props) => {
             width={70}
             height={70}
             className="mr-3 imgContact"
-            src="https://img.pngio.com/happy-person-png-transparent-happy-personpng-images-pluspng-people-without-face-png-1042_788.png"
+            src={props.picture ? `http://localhost:5000/upload/profile/${props.picture}` : defaultProfile}
             alt="Generic placeholder"
           />
           <Media.Body>
-            <p className="my-2 text-display-xs-bold-18">Samuel Suhi</p>
+            <p className="my-2 text-display-xs-bold-18">{props.data.name}</p>
             <p className="m-0 text-sm">
-              +62 813-8492-9994
+              {props.data.phoneNumber ? props.data.phoneNumber : 'Not PhoneNumber'}
             </p>
           </Media.Body>
         </Media>

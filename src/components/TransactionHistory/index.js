@@ -1,64 +1,54 @@
 import React, { Component } from 'react'
 import { Card, Image, Pagination, Form } from 'react-bootstrap'
 import FormSearch from '../Form/FormSearch'
-// import { Link } from 'react-router-dom'
+import defaultProfile from '../../assets/images/default-image.png'
 
-import listTransfer from '../../utils/listTransfer'
-import listSubscription from '../../utils/listSubscription'
+import { connect } from 'react-redux'
+import { transactionHistory } from '../../redux/action/transaction'
 
-export default class TransactionHistory extends Component {
+class TransactionHistory extends Component {
   state = {
-    listTransfer,
-    listSubscription
+    search: ''
+  }
+  async componentDidMount () {
+    await this.props.transactionHistory(this.props.auth.token)
+  }
+  changeText = (event) => {
+    this.setState({ [event.target.name]: event.target.value }, async () => {
+      await this.props.transactionHistory(this.props.auth.token, this.state.search)
+    })
   }
   render () {
-    const { listTransfer } = this.state
     return (
       <Card className="card-menu border-0">
         <Card.Body>
           <p className="text-display-xs-bold-18">Transaction History</p>
           <Form className="my-3">
-            <FormSearch group="searchIcon" type="text" placeholder="Search receiver here" className="ContactInputSearch">
+            <FormSearch group="searchIcon" type="text" name="search" onChange={(event) => this.changeText(event)} placeholder="Search receiver here" className="ContactInputSearch">
               <i className="fa fa-search" aria-hidden="true"></i>
             </FormSearch>
           </Form>
           <div id="scrollmenu">
-            {listTransfer.map((item) => {
-              return (
-                <div key={item.id}>
-                  <div className="d-flex justify-content-between pt-3">
-                    <div className="d-flex justify-content-center align-content-center">
-                        <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
-                      <div>
-                        <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
-                        <p className="text-link-xs text-color-label">Transfer</p>
+            {this.props.transaction.transactionHistory
+              ? this.props.transaction.transactionHistory.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <div className="d-flex justify-content-between pt-3">
+                      <div className="d-flex justify-content-center align-content-center">
+                          <Image src={item.picture ? `http://localhost:5000/upload/profile/${item.picture}` : defaultProfile} width={56} height={56} className="img-avatar mr-3"/>
+                        <div>
+                          <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
+                          <p className="text-link-xs text-color-label">{item.status}</p>
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-right text-primary text-display-xs-bold-16">
-                      +Rp {item.total}
-                    </p>
-                  </div>
-                </div>
-              )
-            })}
-          {listSubscription.map((item) => {
-            return (
-              <div key={item.id}>
-                <div className="d-flex justify-content-between pt-3">
-                  <div className="d-flex justify-content-center align-content-center">
-                      <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
-                    <div>
-                      <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
-                      <p className="text-link-xs text-color-label">Subscription</p>
+                      <p className="text-right text-primary text-display-xs-bold-16">
+                        +Rp {item.amount}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-right text-danger text-display-xs-bold-16">
-                    -Rp {item.total}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
+                )
+              })
+              : 'No Transaction'}
           </div>
           <Pagination className="d-flex justify-content-center align-content-center">
             <Pagination.First />
@@ -82,3 +72,12 @@ export default class TransactionHistory extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  transaction: state.transaction
+})
+
+const mapDispatchToProps = { transactionHistory }
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionHistory)

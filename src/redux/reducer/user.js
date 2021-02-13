@@ -1,5 +1,6 @@
 const initialState = {
   results: null,
+  contact: null,
   pageInfo: null,
   errorMsg: ''
 }
@@ -15,7 +16,7 @@ const userReducer = (state = initialState, action) => {
     case 'CONTACT': {
       return {
         ...state,
-        results: action.payload,
+        contact: action.payload,
         pageInfo: action.pageInfo
       }
     }

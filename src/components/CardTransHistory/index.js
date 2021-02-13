@@ -20,7 +20,7 @@ class CardTransHistory extends Component {
             <p className="text-display-xs-bold-18">Transaction History</p>
             <Link to="/home-page/transaction-history" className="text-display-xs-bold-16">see all</Link>
           </div>
-          {this.props.transaction.transactionHistory !== null
+          {this.props.transaction.transactionHistory
             ? this.props.transaction.transactionHistory.map((item) => {
               return (
                 <div key={item.id}>
