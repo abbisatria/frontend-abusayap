@@ -6,40 +6,27 @@
 .bg-gray {
   background-color: rgb(245, 245, 245);
 }
+
+#sidebar {
   ul {
-	padding: 0px;
-	list-style: none;
-  position: relative;
-    li {
-      padding-top: 20px;
-	    list-style-type: none;
-      .text-menu {
-        padding: 0 70px;
-        color: $secondary;
-      }
-      .text-menu:focus{
-        color: $primary;
-      }
-      .text-menu:focus + i{
-        color: $primary;
-      }
-      i {
-        color: $secondary;
-        position: absolute;
-        bottom: 5px;
-        left: 25px;
-        transition: 0.3s;
-      }
-    }
+    padding: 0px;
+    list-style: none;
   }
-
-.left-line:focus {
+  li {
+    padding: 30px 0px 0px;
+  }
+  a {
+    color: $secondary;
+  }
+  svg {
+    margin: 0 35px;
+  }
+  .text-menu:focus + svg {
+    color: $primary;
+  }
+  .text-menu:focus{
     border: none;
-    border-left-style: solid;
-    border-left-color: $primary;
-    border-left-width: 4px;
-}
-
-.logout {
-  padding-top: 200px;
+    border-left: 4px solid $primary;
+    color: $primary;
+  }
 }
