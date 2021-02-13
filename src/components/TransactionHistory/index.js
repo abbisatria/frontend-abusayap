@@ -69,6 +69,7 @@ class TransactionHistory extends Component {
     }
   }
   render () {
+    console.log(this.props.transaction.transactionHistory)
     return (
       <Card className="card-menu border-0">
         <Card.Body>
@@ -98,7 +99,7 @@ class TransactionHistory extends Component {
                   </div>
                 )
               })
-              : this.state.message ? this.state.message : <div className="text-center"><Spinner animation="border" variant="success" /></div>}
+              : this.state.message ? this.state.message : this.props.transaction.transactionHistory === undefined ? 'Not Transaction' : <div className="text-center"><Spinner animation="border" variant="success" /></div>}
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="text-300-12">
