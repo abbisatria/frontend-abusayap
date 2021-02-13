@@ -80,7 +80,7 @@ export default class Login extends Component {
                         ? (<div className="error-message" style={{ color: 'red' }}>{errors.email}</div>)
                         : null}
                     </FormInput>
-                    <FormInput div="pb-5" type="password" placeholder="Enter your password"
+                    <FormInput type="password" placeholder="Enter your password"
                       group={`inputWithIcon ${touched.password && errors.password ? 'error' : null}`}
                       name='password'
                       onChange={handleChange}
@@ -96,6 +96,7 @@ export default class Login extends Component {
                         ? (<div className="error-message" style={{ color: 'red' }}>{errors.password}</div>)
                         : null}
                     </FormInput>
+                    <Link to="/reset-password" className="float-right pb-5 text-link-xs text-secondary">Forgot password?</Link>
                     <ButtonCustom block className="btn-custom"
                       type="submit" disabled={isSubmitting}
                     >
