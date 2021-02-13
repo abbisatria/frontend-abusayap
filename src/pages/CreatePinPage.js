@@ -1,9 +1,9 @@
 import React from 'react'
 import CreatePin from '../container/CreatePin'
 
-const CreatePinPage = () => {
+const CreatePinPage = (props) => {
   return (
-    <CreatePin />
+    <CreatePin id={props.match.params.id} />
   )
 }
 

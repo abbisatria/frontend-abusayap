@@ -55,6 +55,30 @@ export const signUp = (username, email, password) => {
   }
 }
 
+export const createPin = (id, pin) => {
+  return async dispatch => {
+    const params = new URLSearchParams()
+    params.append('pin', pin)
+    try {
+      dispatch({
+        type: 'SET_AUTH_MESSAGE',
+        payload: ''
+      })
+      const results = await http().patch(`auth/pin/${id}`, params)
+      dispatch({
+        type: 'CREATE_PIN',
+        payload: results.data.message
+      })
+    } catch (err) {
+      const { message } = err.response.data
+      dispatch({
+        type: 'SET_AUTH_MESSAGE',
+        payload: message
+      })
+    }
+  }
+}
+
 export const forgotPassword = (email) => {
   return async dispatch => {
     const params = new URLSearchParams()

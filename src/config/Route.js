@@ -27,11 +27,11 @@ export default class App extends Component {
               <Route path="/" exact component={LandingPage} />
               <Route path="/login" component={Login} />
               <Route path="/sign-up" component={SignUp} />
-              <Route path="/create-pin" component={CreatePin} />
+              <Route path="/create-pin/:id" component={CreatePin} />
               <Route path="/reset-password" component={ResetPassword} />
               <PrivateRoute path="/home-page" privateComponent={Home} />
               <Route path="/pin-success" component={Pin} />
-              <Route path="/create-new-password" component={CreateNewPassword} />
+              <Route path="/create-new-password/:token" component={CreateNewPassword} />
             </Switch>
           </BrowserRouter>
         </PersistGate>

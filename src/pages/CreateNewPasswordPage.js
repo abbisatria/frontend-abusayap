@@ -1,9 +1,9 @@
 import React from 'react'
 import CreateNewPassword from '../container/CreateNewPassword'
 
-const CreateNewPasswordPage = () => {
+const CreateNewPasswordPage = (props) => {
   return (
-    <CreateNewPassword />
+    <CreateNewPassword token={props.match.params.token} />
   )
 }
 

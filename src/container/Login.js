@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Col, Row, Container, Form } from 'react-bootstrap'
+import { Col, Row, Container, Form, Alert, Spinner } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
@@ -21,31 +21,35 @@ const validationSchema = Yup.object().shape({
 })
 
 class Login extends Component {
-  loginPush = async (values) => {
-    await this.props.login(values.email, values.password)
-    // if (this.props.auth.token) {
-    //   this.props.history.push('/home-page')
-    // }
-    // console.log(values.email)
+  state = {
+    message: '',
+    isLoading: false
   }
-  // componentDidUpdate () {
-  //   console.log(this.props.location)
-  //   if (this.props.auth.token) {
-  //     if (this.props.auth.user.role === 1) {
-  //       if (this.props.location.state === undefined) {
-  //         this.props.history.push('/admin')
-  //       } else {
-  //         this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
-  //       }
-  //     } else {
-  //       if (this.props.location.state === undefined) {
-  //         this.props.history.push('/home-page')
-  //       } else {
-  //         this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
-  //       }
-  //     }
-  //   }
-  // }
+  loginPush = async (values) => {
+    this.setState({ isLoading: true })
+    await this.props.login(values.email, values.password)
+    if (this.props.auth.token) {
+      if (this.props.auth.user.role === 1) {
+        if (this.props.location.state === undefined) {
+          this.setState({ isLoading: false })
+          this.props.history.push('/admin')
+        } else {
+          this.setState({ isLoading: false })
+          this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
+        }
+      } else {
+        if (this.props.location.state === undefined) {
+          this.setState({ isLoading: false })
+          this.props.history.push('/home-page')
+        } else {
+          this.props.history.push((this.props.location.state.from && this.props.location.state.from.pathname))
+        }
+      }
+    } else {
+      this.setState({ isLoading: false })
+      this.setState({ message: this.props.auth.errorMsg })
+    }
+  }
   render () {
     return (
       <div className='container-fluid'>
@@ -62,26 +66,15 @@ class Login extends Component {
                 Transfering money is eassier than ever, you can access Zwallet wherever you are.
                 Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
+            {this.state.message !== '' && <Alert variant="danger">{this.state.message}</Alert>}
               <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
                 onSubmit={ (values, { setSubmitting, resetForm }) => {
                   setSubmitting(true)
-                  // await this.loginPush(values)
-                  // resetForm()
-                  // resetForm()
-                  // setSubmitting(false)
-                  setTimeout(() => {
-                    // disini logicnya puat push
-                    // action bisa disini
-                    this.loginPush(values)
-                    if (this.props.auth.token) {
-                      this.props.history.push('/home-page')
-                    }
-                    // this.loginPush(values)
-                    resetForm()
-                    setSubmitting(false)
-                  }, 500)
+                  resetForm()
+                  setSubmitting(false)
+                  this.loginPush(values)
                 }}
               >
                 {(
@@ -109,7 +102,7 @@ class Login extends Component {
                         ? (<div className="error-message" style={{ color: 'red' }}>{errors.email}</div>)
                         : null}
                     </FormInput>
-                    <FormInput div="pb-5" type="password" placeholder="Enter your password"
+                    <FormInput type="password" placeholder="Enter your password"
                       group={`inputWithIcon ${touched.password && errors.password ? 'error' : null}`}
                       name='password'
                       onChange={handleChange}
@@ -122,11 +115,10 @@ class Login extends Component {
                         ? (<div className="error-message" style={{ color: 'red' }}>{errors.password}</div>)
                         : null}
                     </FormInput>
-                    <ButtonCustom block className="btn-custom"
-                      type="submit" disabled={isSubmitting}
-                    >
-                      Login
-                  </ButtonCustom>
+                    <Link to='/reset-password' className="float-right text-secondary text-link-xs pb-5">Forgot password?</Link>
+                    {this.state.isLoading === false
+                      ? <ButtonCustom block className="btn-custom" type="submit" disabled={isSubmitting}>Login</ButtonCustom>
+                      : (<div className="text-center"><Spinner animation="border" variant="success" /></div>)}
                     <p className="text-center pt-4">Don’t have an account? Let’s <Link to='/sign-up'><b>Sign Up</b></Link> </p>
                   </Form>
                 )}
