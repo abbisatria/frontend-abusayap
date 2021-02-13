@@ -2,12 +2,15 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import Chart from 'chart.js'
 import http from '../../helper/http'
+
+import { connect } from 'react-redux'
 const MyChart = (props) => {
-  const [day, setDay] = useState([])
-  const [color, setColor] = useState([])
-  const [amountAll, setAmountAll] = useState([])
-  const [token] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoicmlkaG9AZ21haWwuY29tIiwicm9sZSI6MiwiZmlyc3RuYW1lIjoicmlkaG8iLCJsYXN0bmFtZSI6Im11aml6YXQiLCJwaG9uZU51bWJlciI6bnVsbCwicGljdHVyZSI6bnVsbCwiaWF0IjoxNjEzMjA0OTQ0fQ.Fylt5d_wo-VM4uCGlGxAyzWqXGdoVjx_xLsrGehKPz4')
-  useEffect(async () => {
+  const [chartData, setChartData] = useState({
+    color: [],
+    day: [],
+    amountWeek: []
+  })
+  useEffect(() => {
     Chart.elements.Rectangle.prototype.draw = function () {
       const ctx = this._chart.ctx
       const vm = this._view
@@ -134,42 +137,47 @@ const MyChart = (props) => {
         ctx.stroke()
       }
     }
+  }, [])
 
+  useEffect(async () => {
     try {
+      const { token } = props.auth
       const response = await http(token).get('chart')
-      setDay(response.data.results.map(item => item.day))
-      setColor(response.data.results.reduce((value, item) => {
-        if (item.asSender > item.asReceiver) {
-          value.push('#9DA6B5')
-        } else {
-          value.push('#00D16C')
-        }
+      setChartData({
+        day: response.data.results.map(item => item.day),
+        color: response.data.results.reduce((value, item) => {
+          if (item.asSender > item.asReceiver) {
+            value.push('#9DA6B5')
+          } else {
+            value.push('#00D16C')
+          }
 
-        return value
-      }, []))
-      setAmountAll(response.data.results.reduce((value, item) => {
-        const total = item.asReceiver - item.asSender
-        if (total < 0) {
-          value.push(total * -1)
-        } else {
-          value.push(total)
-        }
+          return value
+        }, []),
+        amountWeek: response.data.results.reduce((value, item) => {
+          const total = item.asReceiver - item.asSender
+          if (total < 0) {
+            value.push(total * -1)
+          } else {
+            value.push(total)
+          }
 
-        return value
-      }, []))
+          return value
+        }, [])
+      })
     } catch (err) {
       console.log(err)
     }
-  }, [day], [color], [amountAll])
+  }, [])
 
   const data = {
-    labels: day,
+    labels: chartData.day,
     datasets: [
       {
         label: 'Rp.',
-        backgroundColor: color,
+        backgroundColor: chartData.color,
         barThickness: 15,
-        data: amountAll
+        data: chartData.amountWeek
       }
     ]
   }
@@ -204,9 +212,18 @@ const MyChart = (props) => {
   }
   return (
     <Fragment>
-      <Bar data={data} options={options} height={268} />
+      { chartData.day.length > 1
+        ? <Bar data={data} options={options} height={168} />
+        : <div style={{ minHeight: '168px', textAlign: 'center' }}>
+          <p style={{ paddingTop: '60px' }}>No Transaction</p>
+        </div>
+      }
     </Fragment>
   )
 }
 
-export default MyChart
+const mapStateToProps = (props) => ({
+  auth: props.auth
+})
+
+export default connect(mapStateToProps)(MyChart)

@@ -20,13 +20,13 @@ class CardTransHistory extends Component {
             <p className="text-display-xs-bold-18">Transaction History</p>
             <Link to="/home-page/transaction-history" className="text-display-xs-bold-16">see all</Link>
           </div>
-          {this.props.transaction.transactionHistory !== null
+          {this.props.transaction.transactionHistory
             ? this.props.transaction.transactionHistory.map((item) => {
               return (
                 <div key={item.id}>
                   <div className="d-flex justify-content-between pt-3">
                     <div className="d-flex justify-content-center align-content-center">
-                        <Image src={item.picture ? `http://localhost:5000/upload/profile/${item.picture}` : defaultProfile} className="img-avatar mr-3"/>
+                      <Image src={item.picture ? `http://localhost:5000/upload/profile/${item.picture}` : defaultProfile} className="img-avatar mr-3" />
                       <div>
                         <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
                         <p className="text-link-xs text-color-label">{item.status}</p>
