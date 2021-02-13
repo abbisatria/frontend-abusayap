@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom'
 export default class index extends Component {
   render () {
     return (
-
-        <Container className="BalanceInfoCard">
+        <Container className="BalanceInfoCard shadow-sm">
           <Row className="w-100 h-100">
             <Col lg={9} className="BalanceInfoCol">
               <div className="BalanceInfoHeader">Balance</div>

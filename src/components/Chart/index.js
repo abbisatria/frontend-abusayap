@@ -182,7 +182,7 @@ const MyChart = (props) => {
   }
   return (
     <Fragment>
-      <Bar data={data} options={options} height="200px" />
+      <Bar data={data} options={options} height="180px" />
     </Fragment>
   )
 }

@@ -7,7 +7,7 @@ import MyChart from '../Chart'
 export default class TotalTransaction extends Component {
   render () {
     return (
-      <Card className="card-menu border-0">
+      <Card className="card-menu border-0 shadow-sm">
         <Card.Body>
           <Row className="pb-5">
             <Col>

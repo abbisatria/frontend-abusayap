@@ -25,7 +25,7 @@ export default class HomeMenu extends Component {
         <Router>
           <Row>
             <Col md={3}>
-              <Card bg="light" variant="light" className="card-menu pt-2" id="sidebar" style={{ height: '100%', minHeight: '500px' }}>
+              <Card bg="light" variant="light" className="card-menu pt-2 border-0 shadow-sm" id="sidebar" style={{ height: '100%', minHeight: '350px' }}>
                 <ul>
                   <li>
                     <Link to="/home-page" className="text-menu">
