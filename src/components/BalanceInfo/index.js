@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
-import { Container, Row, Col, Spinner } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 // import Transfer from '../../assets/images/ArrowUp.png'
 // import TopUp from '../../assets/images/Plus.png'
@@ -18,7 +18,7 @@ class index extends Component {
           <Row className="w-100 h-100">
             <Col lg={9} className="BalanceInfoCol">
               <div className="BalanceInfoHeader">Balance</div>
-              <div className="BalanceInfoAmount">{this.props.user.results !== null ? `Rp. ${this.props.user.results.balance}` : (<Spinner animation="border" variant="light"/>)}</div>
+              <div className="BalanceInfoAmount">{this.props.user.results ? `Rp. ${this.props.user.results.balance}` : 'Rp. 0'}</div>
               <div className="BalanceInfoPhone">{this.props.auth.user.phoneNumber !== null ? this.props.auth.user.phoneNumber : 'No PhoneNumber'}</div>
             </Col>
             <Col className="BalanceInfoCol">
