@@ -39,7 +39,7 @@ export default class SignUp extends Component {
               With All Devices and All Platforms
               With 30.000+ Users</p>
               <p>
-                Transfering money is eassier than ever, you can access Zwallet wherever you are.
+                Transfering money is eassier than ever, you can access Abusayap wherever you are.
                 Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
               <Formik

@@ -9,7 +9,7 @@ export default class ChangePin extends Component {
       <Card className="card-menu border-0">
         <Card.Body>
           <p className="text-display-xs-bold-18">Change Pin</p>
-          <p className="text-sm">Enter your current 6 digits Zwallet PIN below <br/> to continue to the next steps.</p>
+          <p className="text-sm">Enter your current 6 digits Abusayap PIN below <br/> to continue to the next steps.</p>
           <div className="col-7 mx-auto">
             <Form>
               <div

@@ -18,7 +18,7 @@ export default class CreatePin extends Component {
             and Your Data With 6 Digits PIN
 That You Created Yourself.</p>
             <p>
-              Create 6 digits pin to secure all your money and your data in Zwallet app. Keep it secret and don’t tell anyone about your Zwallet account password and the PIN.</p>
+              Create 6 digits pin to secure all your money and your data in Abusayap app. Keep it secret and don’t tell anyone about your Abusayap account password and the PIN.</p>
             <Form>
               <div
                 className="d-flex justify-content-center align-content-center pt-4 pb-5">

@@ -18,7 +18,7 @@ export default class CreateNewPassword extends Component {
 Don’t Worry, You Can Reset Your
 Password In a Minutes.</p>
             <p>
-              Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.</p>
+              Now you can create a new password for your Abusayap account. Type your password twice so we can confirm your new passsword.</p>
             <Form>
               <FormInput div="py-3" group="inputWithIcon" type="password" placeholder="Enter your password">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-key" viewBox="0 0 16 16">

@@ -24,7 +24,7 @@ export default class index extends Component {
               <div className="FooterCopyRight text-left">+62 5637 8882 9901</div>
             </Col>
             <Col lg>
-              <div className="FooterCopyRight text-right">contact@zwallet.com</div>
+              <div className="FooterCopyRight text-right">contact@Abusayap.com</div>
             </Col>
           </Row>
         </Container>

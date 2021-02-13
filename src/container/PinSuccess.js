@@ -17,7 +17,7 @@ export default class PinSuccess extends Component {
             <Image src={successLogo} width={70}/>
             <p className="text-display-xs-bold py-4">Your PIN Was Successfully Created</p>
             <p className="pb-5">
-              Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</p>
+              Your PIN was successfully created and you can now access all the features in Abusayap. Login to your new account and start exploring!</p>
 
             <Link to='/login'>
               <ButtonCustom block >
