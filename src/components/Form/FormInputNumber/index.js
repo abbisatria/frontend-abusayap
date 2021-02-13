@@ -6,7 +6,7 @@ import './style.scss'
 const FormInputNumber = (props) => {
   const { name, type, placeholder, onChange, value, defaultValue, isValid, onBlur } = props
   return (
-    <InputGroup className="mb-3">
+    <InputGroup className="py-4">
       <InputGroup.Prepend>
         <InputGroup.Text className="border-0 input-num-icon">
           <Telephone />

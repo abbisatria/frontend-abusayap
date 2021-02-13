@@ -35,7 +35,7 @@ export default class index extends Component {
   //     },
   //     {
   //       id: 8,
-  //       detail: 'You can see your money in Zwallet within 3 hours.'
+  //       detail: 'You can see your money in Abusayap within 3 hours.'
   //     }
   //   ]
   // }
@@ -92,7 +92,7 @@ export default class index extends Component {
               <div className="TopUpCard">
                 <div className="TopUpList">
                   <span>8</span>
-                  You can see your money in Zwallet within 3 hours.
+                  You can see your money in Abusayap within 3 hours.
                 </div>
               </div>
             </Col>
