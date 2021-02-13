@@ -6,7 +6,7 @@ import './style.scss'
 class ManagePhoneNumber extends Component {
   render () {
     return (
-      <Card className="card-menu border-0">
+      <Card className="card-menu border-0 shadow-sm">
         <Card.Body>
           <p className="text-display-xs-bold-18">Manage Phone Number</p>
           <p className="text-sm">You can only delete the phone number and then <br/> you must add another phone number.</p>

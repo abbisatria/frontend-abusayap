@@ -22,7 +22,7 @@ export default class AddPhoneNumber extends Component {
   }
   render () {
     return (
-      <Card className="card-menu border-0">
+      <Card className="card-menu border-0 shadow-sm">
         <Card.Body>
           <p className="text-display-xs-bold-18">Add Phone Number</p>
           <p className="text-sm">Add at least one phone number for the transfer <br /> ID so you can start transfering your money to <br /> another user.</p>

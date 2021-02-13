@@ -17,13 +17,13 @@
     transition: 0.4s;
   }
 
-  .form-control:focus+i {
+  .form-control:focus+svg {
     color: $primary;
   }
 
-  i {
+  svg {
     position: absolute;
-    top: 11px;
+    top: 7px;
     color: #A9A9A9;
     transition: 0.3s;
   }
@@ -35,7 +35,7 @@
     transition: 0.4s;
   }
 
-  .form-control:focus+i {
+  .form-control:focus+svg {
     color: red;
   }
 }

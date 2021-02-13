@@ -1,13 +1,13 @@
 import http from '../../helper/http'
 
-export const detailUser = (id) => {
+export const detailUser = (token, id) => {
   return async dispatch => {
     try {
       dispatch({
         type: 'SET_USER_MESSAGE',
         payload: ''
       })
-      const response = await http().get(`user/${id}`)
+      const response = await http(token).get(`user/${id}`)
       dispatch({
         type: 'DETAIL_USER',
         payload: response.data.results

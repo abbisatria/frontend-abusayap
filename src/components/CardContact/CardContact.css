@@ -40,6 +40,8 @@
   text-decoration: none;
 }
 .imgContact {
-  width: 70px;
-  border-radius: 10px;
+  border-radius: 10px !important;
+	object-fit: cover;
+	object-position: center;
+	display: block;
 }

@@ -29,14 +29,14 @@ export const transfer = (token, idReceiver, amount, notes, status, dateTransacti
   }
 }
 
-export const detailTransaction = (id) => {
+export const detailTransaction = (token, id) => {
   return async dispatch => {
     try {
       dispatch({
         type: 'SET_TRANSACTION_MESSAGE',
         payload: ''
       })
-      const response = await http().get(`transaction/${id}`)
+      const response = await http(token).get(`transaction/${id}`)
       dispatch({
         type: 'DETAIL_TRANSACTION',
         payload: response.data.results
@@ -51,14 +51,14 @@ export const detailTransaction = (id) => {
   }
 }
 
-export const amountTransaction = (idUser) => {
+export const amountTransaction = (token, idUser) => {
   return async dispatch => {
     try {
       dispatch({
         type: 'SET_TRANSACTION_MESSAGE',
         payload: ''
       })
-      const response = await http().get(`transaction/amountTransaction/${idUser}`)
+      const response = await http(token).get(`transaction/amountTransaction/${idUser}`)
       dispatch({
         type: 'AMOUNT_TRANSACTION',
         payload: response.data.results
@@ -73,14 +73,14 @@ export const amountTransaction = (idUser) => {
   }
 }
 
-export const transactionHistory = (search, limit, page, sort, order) => {
+export const transactionHistory = (token, search, limit, page, sort, order) => {
   return async dispatch => {
     try {
       dispatch({
         type: 'SET_TRANSACTION_MESSAGE',
         payload: ''
       })
-      const response = await http().get(`transaction/historytransaction/history?search=${search !== undefined ? search : ''}&limit=${limit !== undefined ? limit : 4}&page=${page !== undefined ? page : 1}&sort=${sort !== undefined ? sort : 'id'}&order=${order !== undefined ? order : 'ASC'}`)
+      const response = await http(token).get(`transaction/history?search=${search !== undefined ? search : ''}&limit=${limit !== undefined ? limit : 4}&page=${page !== undefined ? page : 1}&sort=${sort !== undefined ? sort : 'id'}&order=${order !== undefined ? order : 'ASC'}`)
       dispatch({
         type: 'TRANSACTION_HISTORY',
         payload: response.data.results,

@@ -20,6 +20,12 @@ const authReducer = (state = initialState, action) => {
         message: action.payload
       }
     }
+    case 'CREATE_PIN': {
+      return {
+        ...state,
+        message: action.payload
+      }
+    }
     case 'FORGOT_PASSWORD': {
       return {
         ...state,

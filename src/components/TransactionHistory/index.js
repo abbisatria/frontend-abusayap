@@ -22,30 +22,31 @@ export default class TransactionHistory extends Component {
               <i className="fa fa-search" aria-hidden="true"></i>
             </FormSearch>
           </Form>
-          {listTransfer.map((item) => {
-            return (
-              <div key={item.id}>
-                <div className="d-flex justify-content-between pt-3">
-                  <div className="d-flex justify-content-center align-content-center">
-                      <Image src={item.img} className="img-avatar mr-3"/>
-                    <div>
-                      <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
-                      <p className="text-link-xs text-color-label">Transfer</p>
+          <div id="scrollmenu">
+            {listTransfer.map((item) => {
+              return (
+                <div key={item.id}>
+                  <div className="d-flex justify-content-between pt-3">
+                    <div className="d-flex justify-content-center align-content-center">
+                        <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
+                      <div>
+                        <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
+                        <p className="text-link-xs text-color-label">Transfer</p>
+                      </div>
                     </div>
+                    <p className="text-right text-primary text-display-xs-bold-16">
+                      +Rp {item.total}
+                    </p>
                   </div>
-                  <p className="text-right text-primary text-display-xs-bold-16">
-                    +Rp {item.total}
-                  </p>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
           {listSubscription.map((item) => {
             return (
               <div key={item.id}>
                 <div className="d-flex justify-content-between pt-3">
                   <div className="d-flex justify-content-center align-content-center">
-                      <Image src={item.img} className="img-avatar mr-3"/>
+                      <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
                     <div>
                       <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
                       <p className="text-link-xs text-color-label">Subscription</p>
@@ -58,6 +59,7 @@ export default class TransactionHistory extends Component {
               </div>
             )
           })}
+          </div>
           <Pagination className="d-flex justify-content-center align-content-center">
             <Pagination.First />
             <Pagination.Prev />

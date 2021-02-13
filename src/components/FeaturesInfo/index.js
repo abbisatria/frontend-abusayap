@@ -16,7 +16,7 @@ export default class index extends Component {
               <div className="FeatureLandingHeader">
                 All The
                 <span>Great</span> <br />
-                Zwallet Features.
+                Abusayap Features.
               </div>
 
               <div className="FeatureLandingCard">
