@@ -1,15 +1,13 @@
 .img-avatar {
   border-radius: 10px !important;
-	object-fit: cover;
-	object-position: center;
-	display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 .nav-home {
-  .nav-link {
-    .media {
-      img {
-        border-radius:12px!important;
-      }
-    }
+  .dropdown-toggle::after {
+    content: none;
   }
 }

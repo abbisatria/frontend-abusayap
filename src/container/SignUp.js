@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Col, Row, Container, Form } from 'react-bootstrap'
+import { Col, Row, Container, Form, Alert, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import FormInput from '../components/Form/FormInput'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+
+import { connect } from 'react-redux'
+import { signUp } from '../redux/action/auth'
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,10 +24,20 @@ const validationSchema = Yup.object().shape({
     .required('Password is required')
 })
 
-export default class SignUp extends Component {
+class SignUp extends Component {
+  state = {
+    message: '',
+    isLoading: false
+  }
   signUpPush = async (values) => {
-    // action bisa disini
-    console.log(values)
+    this.setState({ isLoading: true })
+    await this.props.signUp(values.name, values.email, values.password)
+    if (this.props.auth.message !== '') {
+      this.setState({ message: this.props.auth.message })
+    } else {
+      this.setState({ message: this.props.auth.errorMsg })
+    }
+    this.setState({ isLoading: false })
   }
   render () {
     return (
@@ -42,19 +55,15 @@ export default class SignUp extends Component {
                 Transfering money is eassier than ever, you can access Abusayap wherever you are.
                 Desktop, laptop, mobile phone? we cover all of that for you!
             </p>
+            {this.state.message !== '' && <Alert variant="warning">{this.state.message}</Alert>}
               <Formik
                 initialValues={{ name: '', email: '', password: '' }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   setSubmitting(true)
-
-                  setTimeout(() => {
-                    // disini logicnya puat push
-                    // action bisa disini
-                    this.signUpPush(values)
-                    resetForm()
-                    setSubmitting(false)
-                  }, 500)
+                  resetForm()
+                  setSubmitting(false)
+                  this.signUpPush(values)
                 }}
               >
                 {(
@@ -114,11 +123,9 @@ export default class SignUp extends Component {
                         ? (<div className="error-message" style={{ color: 'red' }}>{errors.password}</div>)
                         : null}
                     </FormInput>
-                    <ButtonCustom block className="btn-custom"
-                      type="submit" disabled={isSubmitting}
-                    >
-                      Sign Up
-                  </ButtonCustom>
+                    {this.state.isLoading === false
+                      ? <ButtonCustom block className="btn-custom" type="submit" disabled={isSubmitting}>Sign Up</ButtonCustom>
+                      : (<div className="text-center"><Spinner animation="border" variant="success" /></div>)}
                     <p className="text-center pt-4">Already have an account? Let’s <Link to='/login'><b>Login</b></Link> </p>
                   </Form>
                 )}
@@ -130,3 +137,11 @@ export default class SignUp extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapDispatchToProps = { signUp }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

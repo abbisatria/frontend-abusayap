@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import './DetailTransfer.css'
 import { Container, Row, Col } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import CardContact from '../CardContact'
 import ButtonCustom from '../ButtonCustom'
 import ModalInputPin from '../ModalTransactionInputPin'
 
-function index () {
+function index (props) {
   const [modalShow, setModalShow] = useState(false)
-  const goToResultTransaction = event => {
-    this.props.history.push('/home-page/contact/input-amount/result-transaction')
+  const goToResultTransaction = () => {
+    props.history.push('/home-page/contact/input-amount/detail-transfer/result-transaction')
   }
   return (
     <Container fluid className="DetailTransferContainer">
@@ -44,4 +45,4 @@ function index () {
   )
 }
 
-export default index
+export default withRouter(index)

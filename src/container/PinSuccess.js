@@ -5,7 +5,9 @@ import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import successLogo from '../assets/icons/success.png'
 
-export default class PinSuccess extends Component {
+import { connect } from 'react-redux'
+
+class PinSuccess extends Component {
   render () {
     return (
       <Row className="container-fluid">
@@ -15,7 +17,7 @@ export default class PinSuccess extends Component {
         <Col md={5} className="p-5">
           <Container>
             <Image src={successLogo} width={70}/>
-            <p className="text-display-xs-bold py-4">Your PIN Was Successfully Created</p>
+            <p className="text-display-xs-bold py-4">{this.props.auth.message}</p>
             <p className="pb-5">
               Your PIN was successfully created and you can now access all the features in Abusayap. Login to your new account and start exploring!</p>
 
@@ -30,3 +32,9 @@ export default class PinSuccess extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(PinSuccess)

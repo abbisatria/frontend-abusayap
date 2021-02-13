@@ -1,11 +1,33 @@
 import React, { Component } from 'react'
-import { Col, Row, Container, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Col, Row, Container, Form, Alert, Spinner } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import ButtonCustom from '../components/ButtonCustom'
 import LeftAuth from '../components/LeftAuth'
 import PinInput from 'react-pin-input'
 
-export default class CreatePin extends Component {
+import { connect } from 'react-redux'
+import { createPin } from '../redux/action/auth'
+
+class CreatePin extends Component {
+  state = {
+    pin: null,
+    message: '',
+    isLoading: false
+  }
+  changePin = (value) => {
+    this.setState({ pin: value })
+  }
+  submitData = async (event) => {
+    event.preventDefault()
+    this.setState({ isLoading: true })
+    await this.props.createPin(this.props.id, Number(this.state.pin))
+    if (this.props.auth.errorMsg === '') {
+      this.setState({ isLoading: false })
+      this.props.history.push('/pin-success')
+    } else {
+      this.setState({ isLoading: false, message: this.props.auth.errorMsg })
+    }
+  }
   render () {
     return (
       <Row className="container-fluid">
@@ -18,29 +40,27 @@ export default class CreatePin extends Component {
             and Your Data With 6 Digits PIN
 That You Created Yourself.</p>
             <p>
-              Create 6 digits pin to secure all your money and your data in Abusayap app. Keep it secret and don’t tell anyone about your Abusayap account password and the PIN.</p>
-            <Form>
+              Create 6 digits pin to secure all your money and your data in Zwallet app. Keep it secret and don’t tell anyone about your Zwallet account password and the PIN.</p>
+              {this.state.message !== '' && <Alert variant="danger">{this.state.message}</Alert>}
+            <Form onSubmit={this.submitData}>
               <div
                 className="d-flex justify-content-center align-content-center pt-4 pb-5">
                 <PinInput
                   length={6}
                   initialValue=""
-                  onChange={(value, index) => { }}
+                  onChange={(value) => this.changePin(value)}
                   type="numeric"
                   inputMode="number"
                   style={{ padding: '10px' }}
                   inputStyle={{ borderColor: '#9DA6B5', borderRadius: '10px' }}
                   inputFocusStyle={{ borderColor: '#00D16C' }}
-                  onComplete={(value, index) => { }}
                   autoSelect={true}
                   regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                 />
               </div>
-              <Link to='/pin-success'>
-                <ButtonCustom block >
-                  Confirm
-                </ButtonCustom>
-              </Link>
+              {this.state.isLoading === false
+                ? <ButtonCustom block type="submit" >Confirm</ButtonCustom>
+                : (<div className="text-center"><Spinner animation="border" variant="success" /></div>)}
             </Form>
           </Container>
         </Col>
@@ -48,3 +68,11 @@ That You Created Yourself.</p>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapDispatchToProps = { createPin }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CreatePin))

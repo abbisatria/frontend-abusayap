@@ -159,7 +159,6 @@ const MyChart = (props) => {
     scales: {
       xAxes: [
         {
-          maxBarThickness: 20,
           gridLines: {
             lineWidth: 0,
             display: false
@@ -182,7 +181,7 @@ const MyChart = (props) => {
   }
   return (
     <Fragment>
-      <Bar data={data} options={options} height="180px" />
+      <Bar data={data} options={options} height={268} />
     </Fragment>
   )
 }
