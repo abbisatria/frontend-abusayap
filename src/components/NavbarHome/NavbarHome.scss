@@ -6,3 +6,12 @@
 	object-position: center;
 	display: block;
 }
+.nav-home {
+  .nav-link {
+    .media {
+      img {
+        border-radius:12px!important;
+      }
+    }
+  }
+}
