@@ -100,7 +100,7 @@ export default class Login extends Component {
                     <ButtonCustom block className="btn-custom"
                       type="submit" disabled={isSubmitting}
                     >
-                      Sign Up
+                      Login
                   </ButtonCustom>
                     <p className="text-center pt-4">Don’t have an account? Let’s <Link to='/sign-up'><b>Sign Up</b></Link> </p>
                   </Form>
