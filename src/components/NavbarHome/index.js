@@ -20,7 +20,7 @@ export default class NavbarHome extends Component {
               <Image
                 width={52}
                 height={52}
-                className="mr-3"
+                className="mr-3 img-avatar"
                 src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8ZmFjZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
                 alt="Generic placeholder"
               />

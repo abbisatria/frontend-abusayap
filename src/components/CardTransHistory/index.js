@@ -25,7 +25,7 @@ export default class CardTransHistory extends Component {
               <div key={item.id}>
                 <div className="d-flex justify-content-between pt-3">
                   <div className="d-flex justify-content-center align-content-center">
-                      <Image src={item.img} className="img-avatar mr-3"/>
+                      <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
                     <div>
                       <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
                       <p className="text-link-xs text-color-label">Transfer</p>
@@ -43,7 +43,7 @@ export default class CardTransHistory extends Component {
               <div key={item.id}>
                 <div className="d-flex justify-content-between pt-3">
                   <div className="d-flex justify-content-center align-content-center">
-                      <Image src={item.img} className="img-avatar mr-3"/>
+                      <Image src={item.img} width={56} height={56} className="img-avatar mr-3"/>
                     <div>
                       <p className="text-display-xs-bold-16 mb-2">{item.name}</p>
                       <p className="text-link-xs text-color-label">Subscription</p>
