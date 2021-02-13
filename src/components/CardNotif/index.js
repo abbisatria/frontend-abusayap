@@ -16,7 +16,7 @@ export default class CardNotif extends Component {
     const { listTransfer } = this.state
     return (
       <Card className="card-notif border-0">
-        <Card.Body>
+        <Card.Body id="scrollmenu">
           <p className="text-sm">Today</p>
           {listTransfer.map((item) => {
             return (
