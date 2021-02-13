@@ -47,6 +47,18 @@ const transactionReducer = (state = initialState, action) => {
         confirmation: action.payload
       }
     }
+    case 'CLEAR_TRANSACTION': {
+      return {
+        ...state,
+        results: null,
+        amountTransaction: null,
+        transactionHistory: null,
+        receiver: null,
+        confirmation: null,
+        pageInfo: null,
+        errorMsg: ''
+      }
+    }
     case 'SET_TRANSACTION_MESSAGE': {
       return {
         ...state,

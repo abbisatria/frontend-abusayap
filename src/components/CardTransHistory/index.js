@@ -32,8 +32,8 @@ class CardTransHistory extends Component {
                         <p className="text-link-xs text-color-label">{item.status}</p>
                       </div>
                     </div>
-                    <p className="text-right text-primary text-display-xs-bold-16">
-                      +Rp {item.amount}
+                    <p className={`text-right ${item.userAs === 'sender' ? 'text-danger' : 'text-primary'} text-display-xs-bold-16`}>
+                      {item.userAs === 'sender' ? '-' : '+'}Rp {item.amount}
                     </p>
                   </div>
                 </div>

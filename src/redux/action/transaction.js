@@ -105,3 +105,7 @@ export const confirmation = (value) => ({
   type: 'CONFIRMATION',
   payload: value
 })
+
+export const clearTransaction = () => ({
+  type: 'CLEAR_TRANSACTION'
+})
