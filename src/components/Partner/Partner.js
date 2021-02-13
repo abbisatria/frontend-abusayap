@@ -14,22 +14,22 @@ export default class index extends Component {
       <Container fluid>
         <Row className="PartnerRow">
           <div>
-            <img src={Microsoft} alt="Microsoft" />
+            <img src={Microsoft} alt="Microsoft" className="img-fluid" />
           </div>
           <div>
-            <img src={Dropbox} alt="Dropbox" />
+            <img src={Dropbox} alt="Dropbox" className="img-fluid" />
           </div>
           <div>
-            <img src={Hm} alt="H&M" />
+            <img src={Hm} alt="H&M" className="img-fluid" />
           </div>
           <div>
-            <img src={Airbnb} alt="Airbnb" className="pt-3" />
+            <img src={Airbnb} alt="Airbnb" className="img-fluid pt-3" />
           </div>
           <div>
-            <img src={Canon} alt="Canon" className="pt-4" />
+            <img src={Canon} alt="Canon" className="img-fluid pt-4" />
           </div>
           <div>
-            <img src={Dell} alt="Dell" />
+            <img src={Dell} alt="Dell" className="img-fluid" />
           </div>
         </Row>
       </Container>
