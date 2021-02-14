@@ -18,7 +18,7 @@ const CardContact = (props) => {
           <Media.Body>
             <p className="my-2 text-display-xs-bold-18">{props.data.name}</p>
             <p className="m-0 text-sm">
-              {props.data.phoneNumber ? props.data.phoneNumber : 'Not PhoneNumber'}
+              {props.data.phoneNumber ? `+62 ${props.data.phoneNumber}` : 'Not PhoneNumber'}
             </p>
           </Media.Body>
         </Media>

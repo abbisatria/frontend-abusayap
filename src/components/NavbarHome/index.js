@@ -26,7 +26,7 @@ class NavbarHome extends Component {
           </Nav.Link>
           <Nav.Link>
             <p className="m-0 text-phone-small">{`${this.props.auth.user.firstname} ${this.props.auth.user.lastname}`}</p>
-            <p className="m-0">{this.props.auth.user.phoneNumber !== null ? this.props.auth.user.phoneNumber : 'No PhoneNumber'}</p>
+            <p className="m-0">{this.props.auth.user.phoneNumber !== null ? `+62 ${this.props.auth.user.phoneNumber}` : 'No PhoneNumber'}</p>
           </Nav.Link>
           <DropdownButton
             menuAlign="right"

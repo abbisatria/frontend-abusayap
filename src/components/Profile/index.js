@@ -45,7 +45,7 @@ class Profile extends Component {
           </label>
         </div>
         <h1>{firstname} {lastname}</h1>
-        <p>{phoneNumber}</p>
+        <p>+62 {phoneNumber}</p>
         <div className="menu-profile">
           <Link to="/home-page/profile/personal-info" className="card-menu-profile">
             <h2>Personal Info</h2>
