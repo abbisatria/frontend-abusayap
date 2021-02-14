@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 import { Provider } from 'react-redux'
 import persistedStore from '../redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
-// import PublicRoute from '../src/config/PublicRoute'
 import ScrollToTop from './ScrollToTop'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Login from '../pages/LoginPage'
@@ -25,13 +25,13 @@ export default class App extends Component {
             <ScrollToTop />
             <Switch>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/login" component={Login} />
-              <Route path="/sign-up" component={SignUp} />
-              <Route path="/create-pin/:id" component={CreatePin} />
-              <Route path="/reset-password" component={ResetPassword} />
-              <PrivateRoute path="/home-page" privateComponent={Home} />
-              <Route path="/pin-success" component={Pin} />
-              <Route path="/create-new-password/:token" component={CreateNewPassword} />
+              <PublicRoute restricted={true} path="/login" component={Login} />
+              <PublicRoute restricted={true} path="/sign-up" component={SignUp} />
+              <PublicRoute restricted={true} path="/create-pin/:id" component={CreatePin} />
+              <PublicRoute restricted={true} path="/reset-password" component={ResetPassword} />
+              <PrivateRoute path="/home-page" component={Home} />
+              <PublicRoute restricted={true} path="/pin-success" component={Pin} />
+              <PublicRoute restricted={true} path="/create-new-password/:token" component={CreateNewPassword} />
             </Switch>
           </BrowserRouter>
         </PersistGate>

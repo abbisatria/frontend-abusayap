@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import defaultProfile from '../../assets/images/default-image.png'
 import './Profile.scss'
 import { Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { updateUser } from '../../redux/action/auth'
+import { updateUser, logout } from '../../redux/action/auth'
+import { clearTransaction } from '../../redux/action/transaction'
 
 class Profile extends Component {
   state = {
@@ -18,6 +19,11 @@ class Profile extends Component {
     setTimeout(() => {
       this.setState({ isLoading: false })
     }, 1000)
+  }
+  logout = () => {
+    this.props.logout()
+    this.props.clearTransaction()
+    this.props.history.push('/login')
   }
   render () {
     const { isLoading } = this.state
@@ -53,7 +59,7 @@ class Profile extends Component {
             <h2>Change Pin</h2>
             <i className="fa fa-arrow-right" />
           </Link>
-          <button className="card-menu-profile">
+          <button className="card-menu-profile" onClick={() => this.logout()}>
             <h2>Logout</h2>
           </button>
         </div>
@@ -66,6 +72,6 @@ const mapStateToProps = (props) => ({
   auth: props.auth
 })
 
-const mapDispatchToProps = { updateUser }
+const mapDispatchToProps = { updateUser, logout, clearTransaction }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile))

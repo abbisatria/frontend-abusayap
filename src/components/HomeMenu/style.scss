@@ -5,32 +5,41 @@
   min-height: 100%;
   border: none !important;
 }
+
 .bg-gray {
   background-color: rgb(245, 245, 245);
 }
 
 #sidebar {
+  background-color: white !important;
+
   ul {
     padding: 0px;
     list-style: none;
   }
+
   li {
     padding: 30px 0px 0px;
   }
+
   a {
     color: $secondary;
   }
+
   svg {
     margin: 0 35px;
   }
-  .text-menu:focus + svg {
+
+  .text-menu:focus+svg {
     color: $primary;
   }
-  .text-menu:focus{
+
+  .text-menu:focus {
     border: none;
     border-left: 4px solid $primary;
     color: $primary;
   }
+
   .logout {
     color: $secondary;
     cursor: pointer;

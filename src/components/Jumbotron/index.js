@@ -30,7 +30,7 @@ export default class index extends Component {
               oftenly wasting much of your times.
             </div>
             <div>
-              <Button variant="light" className="HeroBtnTry">Try it Free</Button>{' '}
+              <Link to="/home-page"><Button variant="light" className="HeroBtnTry">Try it Free</Button></Link>
             </div>
           </Col>
           <Col>
