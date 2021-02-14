@@ -93,7 +93,7 @@ class ChangePassword extends Component {
                       <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                     </svg>
                   </FormInput>
-                  <FormInput group="inputWithIcon" type="password" placeholder="Enter your password"
+                  <FormInput group="inputWithIcon" type="password" placeholder="Enter your new password"
                     name='newPassword'
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -104,7 +104,7 @@ class ChangePassword extends Component {
                       <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                     </svg>
                   </FormInput>
-                  <FormInput div="pt-3 pb-5" group="inputWithIcon" type="password" placeholder="Enter your password"
+                  <FormInput div="pt-3 pb-5" group="inputWithIcon" type="password" placeholder="Enter your new password"
                     name='validNewPassword'
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -130,7 +130,7 @@ class ChangePassword extends Component {
                   }
                   <ButtonCustom block type="submit" disabled={values.password === '' || values.newPassword === '' || values.validNewPassword === '' || errors.msg}>
                     Reset Password
-              </ButtonCustom>
+                  </ButtonCustom>
                 </Form>
               )}
             </Formik>

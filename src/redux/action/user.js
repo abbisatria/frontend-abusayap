@@ -44,3 +44,26 @@ export const contact = (token, search, limit, page, sort, order) => {
     }
   }
 }
+
+export const editUserInfo = (token, id, firstname, lastname, email) => {
+  return async dispatch => {
+    try {
+      const data = new URLSearchParams()
+      data.append('firstname', firstname)
+      data.append('lastname', lastname)
+      // data.append('balance', balance)
+      data.append('email', email)
+      const response = await http(token).patch(`user/${id}`, data)
+      dispatch({
+        type: 'EDIT_USER_INFO',
+        payload: response.data.results
+      })
+    } catch (err) {
+      const { message } = err.response.data
+      dispatch({
+        type: 'SET_USER_INFO_MESSAGE',
+        payload: message
+      })
+    }
+  }
+}

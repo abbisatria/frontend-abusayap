@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Card, Form } from 'react-bootstrap'
+import { Card, Form, Alert } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
 import ButtonCustom from '../ButtonCustom'
 import FormInputNumber from '../Form/FormInputNumber'
+import { updateUser } from '../../redux/action/auth'
+import { connect } from 'react-redux'
 
 import './style.scss'
 import { Formik } from 'formik'
@@ -15,12 +17,30 @@ const validationSchema = Yup.object().shape({
     .required('*Name is required')
 })
 
-export default class AddPhoneNumber extends Component {
+class AddPhoneNumber extends Component {
+  state = {
+    message: ''
+  }
   phoneNumberPush = async (values) => {
     // action bisa disini
     console.log(values)
+    const { token, user } = this.props.auth
+    await this.props.updateUser(
+      token,
+      user.id,
+      {
+        phoneNumber: values.phoneNumber
+      }
+    )
+    if (this.props.auth.message !== '') {
+      this.setState({ message: this.props.auth.message })
+    } else {
+      this.setState({ message: this.props.auth.errorMsg })
+    }
+    this.setState({ isLoading: false })
   }
   render () {
+    const { user } = this.props.auth
     return (
       <Card className="card-menu border-0 shadow-sm">
         <Card.Body>
@@ -28,7 +48,7 @@ export default class AddPhoneNumber extends Component {
           <p className="text-sm">Add at least one phone number for the transfer <br /> ID so you can start transfering your money to <br /> another user.</p>
           <div className="col-7 mx-auto">
             <Formik
-              initialValues={{ phoneNumber: '' }}
+              initialValues={{ phoneNumber: `${user.phoneNumber}` }}
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
@@ -63,6 +83,7 @@ export default class AddPhoneNumber extends Component {
                   {touched.phoneNumber && errors.phoneNumber
                     ? (<div className="error-message" style={{ color: 'red', marginBottom: '15px' }}>{errors.phoneNumber}</div>)
                     : null}
+                  {this.state.message !== '' && <Alert variant="info">{this.state.message}</Alert>}
                   <ButtonCustom block type="submit" disabled={isSubmitting}>
                     Add Phone Number
                   </ButtonCustom>
@@ -75,3 +96,11 @@ export default class AddPhoneNumber extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapDispatchToProps = { updateUser }
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPhoneNumber)

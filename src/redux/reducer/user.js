@@ -20,6 +20,12 @@ const userReducer = (state = initialState, action) => {
         pageInfo: action.pageInfo
       }
     }
+    case 'EDIT_USER_INFO': {
+      return {
+        ...state,
+        results: action.payload
+      }
+    }
     case 'SET_USER_MESSAGE': {
       return {
         ...state,

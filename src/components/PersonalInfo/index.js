@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { updateUser } from '../../redux/action/auth'
 
 import './PersonalInfo.scss'
 
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { connect } from 'react-redux'
 
 const validationSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -21,11 +23,31 @@ const validationSchema = Yup.object().shape({
     .required('*Email is required')
 })
 
-export default class PersonalInfo extends Component {
-  updatePush (values) {
+class PersonalInfo extends Component {
+  state = {
+    message: ''
+  }
+  updateProfile = async (values) => {
+    const { token, user } = this.props.auth
     console.log(values)
+    await this.props.updateUser(
+      token,
+      user.id,
+      {
+        firstname: values.firstname,
+        lastname: values.lastname,
+        email: values.email
+      }
+    )
+    if (this.props.auth.message !== '') {
+      this.setState({ message: this.props.auth.message })
+    } else {
+      this.setState({ message: this.props.auth.errorMsg })
+    }
+    this.setState({ isLoading: false })
   }
   render () {
+    const { auth } = this.props
     return (
       <div className="card-personal-info">
         <h1>Personal Information</h1>
@@ -33,7 +55,7 @@ export default class PersonalInfo extends Component {
           We got your personal information from the sign <br /> up proccess. If you want to make changes on <br /> your information, contact our support.
         </p>
         <Formik
-          initialValues={{ firstname: 'robbert', lastname: 'Chandler', email: 'pewdiepie1@gmail.com' }}
+          initialValues={{ firstname: `${auth.user.firstname}`, lastname: `${auth.user.lastname}`, email: `${auth.user.email}`, phoneNumber: `${auth.user.phoneNumber}` }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true)
@@ -41,8 +63,8 @@ export default class PersonalInfo extends Component {
             setTimeout(() => {
               // disini logicnya puat push
               // action bisa disini
-              this.updatePush(values)
-              resetForm()
+              this.updateProfile(values)
+              // resetForm()
               setSubmitting(false)
             }, 500)
           }}
@@ -108,11 +130,12 @@ export default class PersonalInfo extends Component {
                 <Form.Group>
                   <Form.Label>Phone Number</Form.Label>
                   <div className="d-flex justify-content-between">
-                    <Form.Control type="text" defaultValue="+62 813-9387-7946" disabled />
+                    <Form.Control type="text" defaultValue="+62 -" value={values.phoneNumber} disabled />
                     <Link to="/home-page/profile/personal-info/manage-phone-number">Manage</Link>
                   </div>
                 </Form.Group>
               </div>
+              {this.state.message !== '' && <Alert variant="info">{this.state.message}</Alert>}
               <button className="btn btn-primary px-5"
                 type="submit"
                 disabled={isSubmitting}
@@ -124,3 +147,11 @@ export default class PersonalInfo extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapDispatchToProps = { updateUser }
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo)
