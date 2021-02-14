@@ -12,7 +12,7 @@ const CardContact = (props) => {
             width={70}
             height={70}
             className="mr-3 imgContact"
-            src={props.picture ? `http://localhost:5000/upload/profile/${props.picture}` : defaultProfile}
+            src={props.picture ? `http://localhost:5000/upload/profile/${props.data.picture}` : defaultProfile}
             alt="Generic placeholder"
           />
           <Media.Body>
