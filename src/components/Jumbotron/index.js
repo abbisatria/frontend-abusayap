@@ -10,12 +10,12 @@ export default class index extends Component {
     return (
       <Container fluid className="Hero">
         <Row className="HeroRow1">
-          <Col lg={9}>
+          <Col lg={8}>
             <div>
               <img src={Logo} alt="LogoAbusayap" className="HeroAbusayap" />
             </div>
           </Col>
-          <Col lg={3} className="text-center p-0">
+          <Col lg={4} className="text-center p-0">
             <Link to="/login"><Button variant="outline-light" className="HeroBtnLogin">Login</Button></Link>
             <Link to="/sign-up"><Button variant="light" className="HeroBtnSignUp">Sign Up</Button></Link>
           </Col>
@@ -35,7 +35,7 @@ export default class index extends Component {
           </Col>
           <Col>
             <div className="HeroAppDisplay">
-              <img src={AppDisplay} alt="appDisplay" />
+              <img src={AppDisplay} className="img-fluid" alt="appDisplay" />
             </div>
           </Col>
         </Row>
