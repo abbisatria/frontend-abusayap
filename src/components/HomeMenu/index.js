@@ -32,7 +32,7 @@ class HomeMenu extends Component {
       <Container className="py-3">
         <Router>
           <Row>
-            <Col md={3}>
+            <Col md={3} style={{ minHeight: '80vh' }}>
               <Card bg="light" variant="light" className="card-menu pt-2 border-0 shadow-sm" id="sidebar" style={{ height: '100%', minHeight: '350px' }}>
                 <ul>
                   <li>
