@@ -42,13 +42,8 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: {
-          id: action.payload.id !== undefined ? action.payload.id : state.user.id,
-          email: action.payload.email !== undefined ? action.payload.email : state.user.email,
-          role: action.payload.role !== undefined ? action.payload.role : state.user.role,
-          firstname: action.payload.firstname !== undefined ? action.payload.firstname : state.user.firstname,
-          lastname: action.payload.lastname !== undefined ? action.payload.lastname : state.user.lastname,
-          phoneNumber: action.payload.phoneNumber !== undefined ? action.payload.phoneNumber : state.user.phoneNumber,
-          picture: action.payload.picture !== undefined ? action.payload.picture : state.user.picture
+          ...state.user,
+          ...action.payload
         },
         message: action.message
       }

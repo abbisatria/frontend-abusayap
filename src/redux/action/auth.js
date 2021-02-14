@@ -127,42 +127,46 @@ export const resetPassword = (token, password) => {
   }
 }
 
-export const updateUser = (id, pin, password, newPassword, firstname, lastname, balance, email, phoneNumber, picture) => {
+export const updateUser = (token, id, data) => {
   return async dispatch => {
     const params = new FormData()
-    if (pin !== '') {
-      params.append('pin', pin)
+    if (data.pin) {
+      params.append('pin', data.pin)
     }
-    if (password !== '') {
-      params.append('password', password)
+    if (data.password) {
+      params.append('password', data.password)
     }
-    if (newPassword !== '') {
-      params.append('newPassword', newPassword)
+    if (data.newPassword) {
+      params.append('newPassword', data.newPassword)
     }
-    if (firstname !== '') {
-      params.append('firstname', firstname)
+    if (data.firstname) {
+      params.append('firstname', data.firstname)
     }
-    if (lastname !== '') {
-      params.append('lastname', lastname)
+    if (data.lastname) {
+      params.append('lastname', data.lastname)
     }
-    if (balance !== '') {
-      params.append('balance', balance)
+    if (data.balance) {
+      params.append('balance', data.balance)
     }
-    if (email !== '') {
-      params.append('email', email)
+    if (data.email) {
+      params.append('email', data.email)
     }
-    if (phoneNumber !== '') {
-      params.append('phoneNumber', phoneNumber)
+    if (data.phoneNumber) {
+      params.append('phoneNumber', data.phoneNumber)
     }
-    if (picture !== '') {
-      params.append('picture', picture)
+    if (data.picture) {
+      params.append('picture', data.picture)
     }
     try {
       dispatch({
         type: 'SET_AUTH_MESSAGE',
         payload: ''
       })
-      const results = await http().post(`user/${id}`, params)
+      dispatch({
+        type: 'UPDATE_USER',
+        message: ''
+      })
+      const results = await http(token).patch(`user/${id}`, params)
       dispatch({
         type: 'UPDATE_USER',
         payload: results.data.results,

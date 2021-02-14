@@ -1,8 +1,15 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import Chart from 'chart.js'
+import http from '../../helper/http'
 
+import { connect } from 'react-redux'
 const MyChart = (props) => {
+  const [chartData, setChartData] = useState({
+    color: [],
+    day: [],
+    amountWeek: []
+  })
   useEffect(() => {
     Chart.elements.Rectangle.prototype.draw = function () {
       const ctx = this._chart.ctx
@@ -130,23 +137,47 @@ const MyChart = (props) => {
         ctx.stroke()
       }
     }
-  })
+  }, [])
+
+  useEffect(async () => {
+    try {
+      const { token } = props.auth
+      const response = await http(token).get('chart')
+      setChartData({
+        day: response.data.results.map(item => item.day),
+        color: response.data.results.reduce((value, item) => {
+          if (item.asSender > item.asReceiver) {
+            value.push('#9DA6B5')
+          } else {
+            value.push('#00D16C')
+          }
+
+          return value
+        }, []),
+        amountWeek: response.data.results.reduce((value, item) => {
+          const total = item.asReceiver - item.asSender
+          if (total < 0) {
+            value.push(total * -1)
+          } else {
+            value.push(total)
+          }
+
+          return value
+        }, [])
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
   const data = {
-    labels: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    labels: chartData.day,
     datasets: [
       {
-        label: '',
-        backgroundColor: [
-          '#00D16C',
-          '#00D16C',
-          '#9DA6B5',
-          '#9DA6B5',
-          '#9DA6B5',
-          '#00D16C',
-          '#9DA6B5'
-        ],
+        label: 'Rp.',
+        backgroundColor: chartData.color,
         barThickness: 15,
-        data: [120, 70, 100, 80, 56, 107, 110]
+        data: chartData.amountWeek
       }
     ]
   }
@@ -181,9 +212,18 @@ const MyChart = (props) => {
   }
   return (
     <Fragment>
-      <Bar data={data} options={options} height={268} />
+      { chartData.day.length > 1
+        ? <Bar data={data} options={options} height={168} />
+        : <div style={{ minHeight: '168px', textAlign: 'center' }}>
+          <p style={{ paddingTop: '60px' }}>No Transaction</p>
+        </div>
+      }
     </Fragment>
   )
 }
 
-export default MyChart
+const mapStateToProps = (props) => ({
+  auth: props.auth
+})
+
+export default connect(mapStateToProps)(MyChart)
