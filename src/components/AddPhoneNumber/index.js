@@ -14,12 +14,13 @@ const validationSchema = Yup.object().shape({
   phoneNumber: Yup.string()
     .min(9, '*Phone number must have at least 9 characters')
     .max(15, '*Phone number cant be longer than 10 characters')
-    .required('*Name is required')
+    .required('*Phone Number is required')
 })
 
 class AddPhoneNumber extends Component {
   state = {
-    message: ''
+    message: '',
+    phoneNumber: this.props.auth.user.phoneNumber
   }
   phoneNumberPush = async (values) => {
     // action bisa disini
@@ -32,15 +33,14 @@ class AddPhoneNumber extends Component {
         phoneNumber: values.phoneNumber
       }
     )
-    if (this.props.auth.message !== '') {
-      this.setState({ message: this.props.auth.message })
+    if (this.props.auth.message) {
+      this.setState({ message: this.props.auth.message, phoneNumber: this.props.auth.phoneNumber })
     } else {
       this.setState({ message: this.props.auth.errorMsg })
     }
     this.setState({ isLoading: false })
   }
   render () {
-    const { user } = this.props.auth
     return (
       <Card className="card-menu border-0 shadow-sm">
         <Card.Body>
@@ -48,18 +48,10 @@ class AddPhoneNumber extends Component {
           <p className="text-sm">Add at least one phone number for the transfer <br /> ID so you can start transfering your money to <br /> another user.</p>
           <div className="col-7 mx-auto">
             <Formik
-              initialValues={{ phoneNumber: `${user.phoneNumber}` }}
+              initialValues={{ phoneNumber: this.state.phoneNumber }}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
-                setSubmitting(true)
-
-                setTimeout(() => {
-                  // disini logicnya puat push
-                  // action bisa disini
-                  this.phoneNumberPush(values)
-                  resetForm()
-                  setSubmitting(false)
-                }, 500)
+              onSubmit={(values) => {
+                this.phoneNumberPush(values)
               }}
             >
               {(
@@ -84,7 +76,7 @@ class AddPhoneNumber extends Component {
                     ? (<div className="error-message" style={{ color: 'red', marginBottom: '15px' }}>{errors.phoneNumber}</div>)
                     : null}
                   {this.state.message !== '' && <Alert variant="info">{this.state.message}</Alert>}
-                  <ButtonCustom block type="submit" disabled={isSubmitting}>
+                  <ButtonCustom block type="submit">
                     Add Phone Number
                   </ButtonCustom>
                 </Form>

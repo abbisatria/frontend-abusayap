@@ -55,18 +55,12 @@ class PersonalInfo extends Component {
           We got your personal information from the sign <br /> up proccess. If you want to make changes on <br /> your information, contact our support.
         </p>
         <Formik
-          initialValues={{ firstname: `${auth.user.firstname}`, lastname: `${auth.user.lastname}`, email: `${auth.user.email}`, phoneNumber: `${auth.user.phoneNumber}` }}
+          initialValues={{ firstname: auth.user.firstname, lastname: auth.user.lastname, email: auth.user.email, phoneNumber: auth.user.phoneNumber || 'Input phoneNumber' }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true)
-
-            setTimeout(() => {
-              // disini logicnya puat push
-              // action bisa disini
-              this.updateProfile(values)
-              // resetForm()
-              setSubmitting(false)
-            }, 500)
+            setSubmitting(false)
+            this.updateProfile(values)
           }}
         >
           {(
@@ -130,7 +124,7 @@ class PersonalInfo extends Component {
                 <Form.Group>
                   <Form.Label>Phone Number</Form.Label>
                   <div className="d-flex justify-content-between">
-                    <Form.Control type="text" defaultValue="+62 -" value={values.phoneNumber} disabled />
+                    <Form.Control type="text" value={values.phoneNumber} disabled />
                     <Link to="/home-page/profile/personal-info/manage-phone-number">Manage</Link>
                   </div>
                 </Form.Group>
