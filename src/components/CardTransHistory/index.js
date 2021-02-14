@@ -20,7 +20,7 @@ class CardTransHistory extends Component {
             <p className="text-display-xs-bold-18">Transaction History</p>
             <Link to="/home-page/transaction-history" className="text-display-xs-bold-16">see all</Link>
           </div>
-          {this.props.transaction.transactionHistory !== null
+          {this.props.transaction.transactionHistory
             ? this.props.transaction.transactionHistory.map((item) => {
               return (
                 <div key={item.id}>
@@ -32,8 +32,8 @@ class CardTransHistory extends Component {
                         <p className="text-link-xs text-color-label">{item.status}</p>
                       </div>
                     </div>
-                    <p className="text-right text-primary text-display-xs-bold-16">
-                      +Rp {item.amount}
+                    <p className={`text-right ${item.userAs === 'sender' ? 'text-danger' : 'text-primary'} text-display-xs-bold-16`}>
+                      {item.userAs === 'sender' ? '-' : '+'}Rp {item.amount}
                     </p>
                   </div>
                 </div>

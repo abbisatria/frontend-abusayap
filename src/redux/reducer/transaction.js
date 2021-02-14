@@ -2,6 +2,8 @@ const initialState = {
   results: null,
   amountTransaction: null,
   transactionHistory: null,
+  receiver: null,
+  confirmation: null,
   pageInfo: null,
   errorMsg: ''
 }
@@ -31,6 +33,30 @@ const transactionReducer = (state = initialState, action) => {
         ...state,
         transactionHistory: action.payload,
         pageInfo: action.pageInfo
+      }
+    }
+    case 'SELECT_RECEIVER': {
+      return {
+        ...state,
+        receiver: action.payload
+      }
+    }
+    case 'CONFIRMATION': {
+      return {
+        ...state,
+        confirmation: action.payload
+      }
+    }
+    case 'CLEAR_TRANSACTION': {
+      return {
+        ...state,
+        results: null,
+        amountTransaction: null,
+        transactionHistory: null,
+        receiver: null,
+        confirmation: null,
+        pageInfo: null,
+        errorMsg: ''
       }
     }
     case 'SET_TRANSACTION_MESSAGE': {

@@ -1,18 +1,29 @@
 import React, { Component } from 'react'
 import './InputAmount.css'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'
 import CardContact from '../CardContact'
 import FormInputAmount from '../Form/FormInputAmount'
 import FormInput from '../Form/FormInput'
 import { Formik, ErrorMessage } from 'formik'
+import { connect } from 'react-redux'
+import { detailUser } from '../../redux/action/user'
+import { confirmation } from '../../redux/action/transaction'
 const errorMessage = {
   color: 'red',
   textAlign: 'center'
 }
 
-export default class index extends Component {
+const date = new Date()
+
+class index extends Component {
   state = {
-    amountBelance: 120000
+    amountBelance: null
+  }
+
+  async componentDidMount () {
+    await this.props.detailUser(this.props.auth.token, this.props.auth.user.id)
+    this.setState({ amountBelance: this.props.user.results.balance })
   }
 
   amountValidation (values) {
@@ -35,8 +46,9 @@ export default class index extends Component {
     return errors
   }
 
-  transaction (values) {
-    console.log(values)
+  transaction = async (values) => {
+    await this.props.confirmation({ ...values, ...this.props.transaction.receiver, amountBalance: this.state.amountBelance - values.amount, dateTransaction: date, status: 'Transfer' })
+    this.props.history.push('/home-page/contact/input-amount/detail-transfer')
   }
 
   render () {
@@ -46,7 +58,7 @@ export default class index extends Component {
           <Col>
             <div className="InputAmountTitle">Transfer Money</div>
             <div className="my-3">
-              <CardContact />
+              <CardContact data={this.props.transaction.receiver} />
             </div>
             <div className="InputAmountDetail">
               Type the amount you want to transfer and then <br />
@@ -57,13 +69,9 @@ export default class index extends Component {
               validate={(values) => this.amountValidation(values)}
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
-                setTimeout(() => {
-                  // disini logicnya puat push
-                  // action bisa disini
-                  this.transaction(values)
-                  resetForm()
-                  setSubmitting(false)
-                }, 500)
+                resetForm()
+                setSubmitting(false)
+                this.transaction(values)
               }}
             >
               {({
@@ -84,7 +92,7 @@ export default class index extends Component {
                     value={values.amount}
                   />
                   <ErrorMessage name="amount" component="div" style={errorMessage} />
-                  <div className="InputAmountBalance">Rp120.000 Available</div>
+                  <div className="InputAmountBalance">{this.state.amountBelance !== null ? `Rp ${this.state.amountBelance} Available` : 'Loading...'} </div>
                   <FormInput
                     div="mx-auto col-7 py-5"
                     type="text" placeholder="For buying some socks"
@@ -111,3 +119,13 @@ export default class index extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  user: state.user,
+  transaction: state.transaction
+})
+
+const mapDispatchToProps = { detailUser, confirmation }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
