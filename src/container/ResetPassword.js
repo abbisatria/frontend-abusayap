@@ -40,7 +40,12 @@ Don’t Worry, You Can Reset Your
 Password In a Minutes.</p>
             <p>
               To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</p>
-              {this.state.message !== '' && <Alert variant="danger">{this.state.message}</Alert>}
+              {this.props.auth.message && this.state.message
+                ? <Alert variant='success'>{this.props.auth.message}</Alert>
+                : null}
+              {this.props.auth.errorMsg && this.state.message
+                ? <Alert variant='danger'>{this.props.auth.errorMsg}</Alert>
+                : null}
             <Form onSubmit={this.forgotPassword}>
               <FormInput name="email" div="pt-3 pb-5" onChange={(event) => this.changeText(event)} group="inputWithIcon" type="email" placeholder="Enter your e-mail">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-envelope" viewBox="0 0 16 16">
