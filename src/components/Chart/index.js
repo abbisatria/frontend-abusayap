@@ -16,12 +16,9 @@ const MyChart = (props) => {
       const vm = this._view
       let left, right, top, bottom, signX, signY, borderSkipped, radius
       let borderWidth = vm.borderWidth
-      // Set Radius Here
-      // If radius is large enough to cause drawing errors a max radius is imposed
       const cornerRadius = 20
 
       if (!vm.horizontal) {
-        // bar
         left = vm.x - vm.width / 2
         right = vm.x + vm.width / 2
         top = vm.y
@@ -30,7 +27,6 @@ const MyChart = (props) => {
         signY = bottom > top ? 1 : -1
         borderSkipped = vm.borderSkipped || 'bottom'
       } else {
-        // horizontal bar
         left = vm.base
         right = vm.x
         top = vm.y - vm.height / 2
@@ -40,14 +36,10 @@ const MyChart = (props) => {
         borderSkipped = vm.borderSkipped || 'left'
       }
 
-      // Canvas doesn't allow us to stroke inside the width so we can
-      // adjust the sizes to fit if we're setting a stroke on the line
       if (borderWidth) {
-        // borderWidth shold be less than bar width and bar height.
         const barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom))
         borderWidth = borderWidth > barSize ? barSize : borderWidth
         const halfStroke = borderWidth / 2
-        // Adjust borderWidth when bar top position is near vm.base(zero).
         const borderLeft =
           left + (borderSkipped !== 'left' ? halfStroke * signX : 0)
         const borderRight =
@@ -56,12 +48,10 @@ const MyChart = (props) => {
           top + (borderSkipped !== 'top' ? halfStroke * signY : 0)
         const borderBottom =
           bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0)
-        // not become a vertical line?
         if (borderLeft !== borderRight) {
           top = borderTop
           bottom = borderBottom
         }
-        // not become a horizontal line?
         if (borderTop !== borderBottom) {
           left = borderLeft
           right = borderRight
@@ -73,9 +63,6 @@ const MyChart = (props) => {
       ctx.strokeStyle = vm.borderColor
       ctx.lineWidth = borderWidth
 
-      // Corner points, from bottom-left to bottom-right clockwise
-      // | 1 2 |
-      // | 0 3 |
       const corners = [
         [left, bottom],
         [left, top],
@@ -83,7 +70,6 @@ const MyChart = (props) => {
         [right, bottom]
       ]
 
-      // Find first (starting) corner with fallback to 'bottom'
       const borders = ['bottom', 'left', 'top', 'right']
       let startCorner = borders.indexOf(borderSkipped, 0)
       if (startCorner === -1) {
@@ -94,7 +80,6 @@ const MyChart = (props) => {
         return corners[(startCorner + index) % 4]
       }
 
-      // Draw rectangle from 'startCorner'
       let corner = cornerAt(0)
       ctx.moveTo(corner[0], corner[1])
 
@@ -108,7 +93,6 @@ const MyChart = (props) => {
 
         radius = cornerRadius
 
-        // Fix radius being too large
         if (radius > height / 2) {
           radius = height / 2
         }

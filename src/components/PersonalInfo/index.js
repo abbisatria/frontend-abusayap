@@ -78,7 +78,6 @@ class PersonalInfo extends Component {
                 <Form.Group >
                   <Form.Label>First Name</Form.Label>
                   <Form.Control type="text" placeholder="Write your firtname"
-                    // set default value di initial state
                     name='firstname'
                     onChange={handleChange}
                     onBlur={handleBlur}

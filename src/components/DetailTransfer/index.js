@@ -6,7 +6,6 @@ import CardContact from '../CardContact'
 import ButtonCustom from '../ButtonCustom'
 import PinInput from 'react-pin-input'
 import moment from 'moment'
-// import ModalInputPin from '../ModalTransactionInputPin'
 import { transfer } from '../../redux/action/transaction'
 import { connect } from 'react-redux'
 import Moment from 'react-moment'
@@ -110,43 +109,3 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { transfer }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
-// function index (props) {
-//   const [modalShow, setModalShow] = useState(false)
-//   const goToResultTransaction = () => {
-//     props.history.push('/home-page/contact/input-amount/detail-transfer/result-transaction')
-//   }
-//   return (
-//     <Container fluid className="DetailTransferContainer">
-//     <Row>
-//       <Col>
-//         <div className="DetailTransfer">Transfer To</div>
-//         <CardContact />
-//         <div className="DetailTransfer mb-3">Details</div>
-//         <div className="DetailTransferCard">
-//           <div className="DetailTransferHeader">Amount</div>
-//           <div className="DetailTransferFill">Rp100.000</div>
-//         </div>
-//         <div className="DetailTransferCard">
-//           <div className="DetailTransferHeader">Balance Left</div>
-//           <div className="DetailTransferFill">Rp20.000</div>
-//         </div>
-//         <div className="DetailTransferCard">
-//           <div className="DetailTransferHeader">Date & Time</div>
-//           <div className="DetailTransferFill">May 11, 2020 - 12.20</div>
-//         </div>
-//         <div className="DetailTransferCard">
-//           <div className="DetailTransferHeader">Notes</div>
-//           <div className="DetailTransferFill">For buying some socks</div>
-//         </div>
-//         <div className="text-right my-4">
-//           <ButtonCustom onClick={() => setModalShow(true)}>Continue</ButtonCustom>
-//           <ModalInputPin show={modalShow} onGo={() => goToResultTransaction()} />
-//         </div>
-//       </Col>
-//     </Row>
-//   </Container>
-
-//   )
-// }
-
-// export default withRouter(index)

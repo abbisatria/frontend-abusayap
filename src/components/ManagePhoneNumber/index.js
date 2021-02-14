@@ -3,8 +3,6 @@ import { Card, Alert } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { updateUser } from '../../redux/action/auth'
 import { withRouter } from 'react-router-dom'
-// import { Formik } from 'formik'
-// import * as Yup from 'yup'
 import './style.scss'
 
 class ManagePhoneNumber extends Component {

@@ -3,44 +3,7 @@ import './index.css'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default class index extends Component {
-  // state = {
-  //   listTopUp: [
-  //     {
-  //       id: 1,
-  //       detail: 'Go to the nearest ATM or you can use E-Banking.'
-  //     },
-  //     {
-  //       id: 2,
-  //       detail: 'Type your security number on the ATM or E-Banking.'
-  //     },
-  //     {
-  //       id: 3,
-  //       detail: 'Select “Transfer” in the menu'
-  //     },
-  //     {
-  //       id: 4,
-  //       detail: 'Type the virtual account number that we provide you at the top.'
-  //     },
-  //     {
-  //       id: 5,
-  //       detail: 'Type the amount of the money you want to top up.'
-  //     },
-  //     {
-  //       id: 6,
-  //       detail: 'Read the summary details'
-  //     },
-  //     {
-  //       id: 7,
-  //       detail: 'Press transfer / top up'
-  //     },
-  //     {
-  //       id: 8,
-  //       detail: 'You can see your money in Abusayap within 3 hours.'
-  //     }
-  //   ]
-  // }
   render () {
-    // const { listTopUp } = this.Setstate
     return (
       <div className="TopUpContainer">
         <Container>

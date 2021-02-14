@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Form, Alert } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
 import ButtonCustom from '../ButtonCustom'
 import FormInputNumber from '../Form/FormInputNumber'
 import { updateUser } from '../../redux/action/auth'
@@ -23,7 +22,6 @@ class AddPhoneNumber extends Component {
     phoneNumber: this.props.auth.user.phoneNumber
   }
   phoneNumberPush = async (values) => {
-    // action bisa disini
     console.log(values)
     const { token, user } = this.props.auth
     await this.props.updateUser(

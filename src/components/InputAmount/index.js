@@ -28,7 +28,7 @@ class index extends Component {
 
   amountValidation (values) {
     const errors = {}
-    const { amountBelance } = this.state // ganti jadi state belancenya ya
+    const { amountBelance } = this.state
     if (!values.amount) {
       errors.amount = 'Amount Required'
     } else if (values.amount > amountBelance) {

@@ -64,8 +64,6 @@ class ChangePassword extends Component {
               onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
                 setTimeout(() => {
-                  // disini logicnya puat push
-                  // action bisa disini
                   this.passwordPush(values)
                   resetForm()
                   setSubmitting(false)

@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import './index.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-// import Transfer from '../../assets/images/ArrowUp.png'
-// import TopUp from '../../assets/images/Plus.png'
 
 import { connect } from 'react-redux'
 import { detailUser } from '../../redux/action/user'

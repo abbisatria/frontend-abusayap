@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import './style.css'
 import CardContact from '../CardContact'
 import SuccessTransaction from '../SuccesTransaction/SuccesComponent'
-// import FailedTransaction from '../FailedTransaction/FailedComponent'
-// import FailedButton from '../FailedTransaction/FailedButton'
 import SuccessButton from '../SuccesTransaction/SuccesButton'
 import Moment from 'react-moment'
 
@@ -16,7 +14,6 @@ class index extends Component {
         <Row>
           <Col>
             <div>
-              {/* <FailedTransaction /> */}
               <SuccessTransaction />
             </div>
 
@@ -39,7 +36,6 @@ class index extends Component {
             <div className="DetailTransfer mt-4">Transfer To</div>
             <CardContact data={this.props.transaction.results.receiver[0]} />
             <div className="mt-5">
-              {/* <FailedButton /> */}
               <SuccessButton />
             </div>
           </Col>

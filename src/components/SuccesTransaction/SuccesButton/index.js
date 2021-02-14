@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
 import { Button } from 'react-bootstrap'
-// import ButtonCustom from '../../ButtonCustom'
 import DownloadIcon from '../../../assets/icons/download.png'
 
 export default class index extends Component {

@@ -16,7 +16,6 @@ export default class LandingPage extends Component {
         <Features />
         <Testimoni />
         <Footer />
-
       </div>
     )
   }
